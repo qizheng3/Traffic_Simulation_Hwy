@@ -15,10 +15,7 @@ def main():
 		nLane = 5
 		highway = MultiLane.MultiLane(highwayLength, nLane, vMax)
 
-		iteration = 200
-
-		# print len(highway.lanes)
-		# print len(highway.lanes[0].cells)
+		iteration = 20
 
 		for i in range(iteration):
 			#highway.printSpeed();
@@ -30,8 +27,9 @@ def main():
 			highway.exitAtEnd()
 			highway.entranceEvent(0.3, 0.4)
 
-			#send msg to UI
-			GUI.drawFrame(i)
+			#send data to UI
+			GUI.display(highway)
+
 
 	workerThread = threading.Thread(target = run)
 	workerThread.setDaemon(True)
