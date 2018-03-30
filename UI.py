@@ -14,6 +14,7 @@ class UI(object):
     programTitle = "Traffic Simulation Software Version 1.0"
     animationSize = (5, 4)
     animationDpi = 100
+    refreshInterval = 1000 # refresh frame interval in milli-second
     
     def __init__(self):
         # UI preparation
@@ -44,33 +45,31 @@ class UI(object):
         self.processMessage()
     
     def processData(self, highway):
-        return arange(0.0, 3, 0.1), sin(2 * pi * arange(0.0, 3, 0.1) + highway)
+        x = []
+        y = []
+        for i, lane in enumerate(highway.lanes):
+            for j, cell in enumerate(lane.cells):
+                if cell is not None:
+                    x.append(i)
+                    y.append(j)
+
+        return x, y
+
+    def drawFrame(self, x, y):
+        self.figure.clf()
+        self.figure.add_subplot(111).scatter(x, y, s = 3, color = 'r')
+        self.canvas.show()
 
     def processMessage(self):
-        self.root.after(500, self.processMessage) # check message queue every 0.5s
+        self.root.after(self.refreshInterval, self.processMessage) # check message queue every interval
         while not self.messageQueue.empty():
             x, y = self.messageQueue.get()
-            self.figure.clf()
-            self.figure.add_subplot(111).scatter(x, y, s = 3, color = 'r')
-            self.canvas.show()
-            break
-            
-    
-    def drawFrame(self, highway):
+            self.drawFrame(x, y)
+            break        
+
+    def display(self, highway):
         x, y = self.processData(highway)
         self.messageQueue.put((x, y))
-      
-    def display(self, highway):
-        pass
-
-        
         
     def mainloop(self):
         self.root.mainloop()
-        
-
-if __name__ == '__main__':
-    UI = UI()
-    for highway in range(10):
-        pass
-    UI.mainloop()
