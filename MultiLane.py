@@ -26,7 +26,7 @@ class MultiLane:
 					currCar = lane.cells[i];
 					if currCar.speed <= preCar.speed - 1:
 						currCar.speed = min(currCar.vMax, lane.vMax, preCar.speed);
-					elif currCar.speed > preCar.speed and abs(i - prePos) <= 20:
+					elif currCar.speed > preCar.speed and abs(i - prePos) <= 40:
 						currCar.speed = preCar.speed;
 					prePos = i;
 
@@ -90,7 +90,7 @@ class MultiLane:
 
 	def exitAtEnd(self):
 		for lane in self.lanes:
-			for i in range(len(lane.cells) - 10):
+			for i in range(len(lane.cells) - 5, len(lane.cells)):
 				if lane.cells[i] != None:
 					lane.RemoveCar(i)
 

@@ -12,9 +12,9 @@ from time import sleep
 class UI(object):
     # UI config
     programTitle = "Traffic Simulation Software Version 1.0"
-    animationSize = (5, 4)
+    animationSize = (20, 4)
     animationDpi = 100
-    refreshInterval = 1000 # refresh frame interval in milli-second
+    refreshInterval = 500 # refresh frame interval in milli-second
     
     def __init__(self):
         # UI preparation
@@ -57,7 +57,9 @@ class UI(object):
 
     def drawFrame(self, x, y):
         self.figure.clf()
-        self.figure.add_subplot(111).scatter(x, y, s = 3, color = 'r')
+        self.figure.add_subplot(111).scatter(y, x, s = 0.5, color = 'r')
+        axes = self.figure.gca()
+        axes.set_xlim([0,500])
         self.canvas.show()
 
     def processMessage(self):

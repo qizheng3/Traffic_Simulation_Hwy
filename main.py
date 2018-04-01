@@ -10,12 +10,12 @@ def main():
 
 	def run():
 
-		highwayLength = 50000
+		highwayLength = 2500
 		vMax = 40
 		nLane = 5
 		highway = MultiLane.MultiLane(highwayLength, nLane, vMax)
 
-		iteration = 20
+		iteration = 200
 
 		for i in range(iteration):
 			#highway.printSpeed();
@@ -23,9 +23,9 @@ def main():
 			highway.updatePosition()
 			highway.checkChangeLaneLeft()
 			highway.checkChangeLaneRight()
-			highway.enterAtStart(0.5)
+			highway.enterAtStart(0.1)
 			highway.exitAtEnd()
-			highway.entranceEvent(0.3, 0.4)
+			# highway.entranceEvent(0.3, 0.4)
 
 			#send data to UI
 			GUI.display(highway)

@@ -14,10 +14,8 @@ class Lane:
 		#initialize some vehicles in the lane
 		for i in range(int(self.density * self.size)):
 			position = 0;
-			p = 1;
-			while True and p < 10:
+			while True:
 				position = random.randint(0,self.size - 1);
-				p = p + 1;
 				if self.cells[position] == None:
 					break;
 			self.cells[position] = vehicle.Vehicle();
