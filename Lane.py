@@ -5,9 +5,9 @@ cellSize = 5
 
 # one single lane
 class Lane:
-    def __init__(self, l, vMax):
+    def __init__(self, l, vMax, density):
         # density = total number of vehicles / total number of cells
-        self.density = 0.1  # initialize the vehicle density of one highway
+        self.density = density  # initialize the vehicle density of one highway
         self.vMax = vMax  # max speed for all vehicles in this lane
         self.length = l	# length of each lane
         self.size = l / cellSize  # initialize the number of cells of one highway (unit length: 10 meters) #### updated: 5m

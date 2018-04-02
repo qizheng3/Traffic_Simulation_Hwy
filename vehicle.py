@@ -15,8 +15,6 @@ class Vehicle:
         self.speed = max(17, random.random() * self.vMax);
         # initialize the speed of one vehicle, assume the minimal speed is 17m/s (60km/s)
         
-        self.probRight = 0.2;  # the probability to turn the right lane
-        self.probLeft = 0.2;  # the probability to turn the left lane
         
         self.probChangeWay = 0.3;  # the probability to turn to another highway if it's in the rightmost lane
     
