@@ -2,6 +2,7 @@ from Tkinter import *
 import matplotlib as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
+
 import Queue
 import threading
 import warnings
@@ -12,7 +13,7 @@ from time import sleep
 class UI(object):
     # UI config
     programTitle = "Traffic Simulation Software Version 1.0"
-    animationSize = (20, 4)
+    animationSize = (12, 3)
     animationDpi = 100
     refreshInterval = 500 # refresh frame interval in milli-second
     
@@ -47,19 +48,26 @@ class UI(object):
     def processData(self, highway):
         x = []
         y = []
+        laneLen = highway.lanes[0].size
         for i, lane in enumerate(highway.lanes):
-            for j, cell in enumerate(lane.cells):
-                if cell is not None:
-                    x.append(i)
-                    y.append(j)
+            if i < highway.nLane // 2:
+                for j, cell in enumerate(lane.cells):
+                    if cell is not None:
+                        x.append(i)
+                        y.append(j)
+            else:
+                for j, cell in enumerate(lane.cells):
+                    if cell is not None:
+                        x.append(i)
+                        y.append(laneLen-1-j)
 
         return x, y
 
     def drawFrame(self, x, y):
         self.figure.clf()
-        self.figure.add_subplot(111).scatter(y, x, s = 0.5, color = 'r')
+        self.figure.add_subplot(111).scatter(y, x, s = 0.5, color = 'b')
         axes = self.figure.gca()
-        axes.set_xlim([0,500])
+        axes.set_xlim([0, 500])
         self.canvas.show()
 
     def processMessage(self):
