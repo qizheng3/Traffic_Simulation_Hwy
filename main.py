@@ -13,6 +13,7 @@ def main():
         vMax1 = 45
         vMax2 = 25
         nLane = 3
+
         highways = HighWay.HighWay(highwayLength, nLane, vMax1, vMax2)
         iteration = 1000
         
@@ -27,6 +28,7 @@ def main():
             # highway.entranceEvent(0.3, 0.4)
             
             highways.updateStates()
+
             
             # send data to UI
             GUI.display(highways)
