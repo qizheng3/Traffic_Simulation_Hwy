@@ -1,6 +1,5 @@
 import random
 
-
 class Vehicle:
     def __init__(self):
         # there are three types of vehicles. Their max speed is 25m/s, 30m/s, 35m/s, respectively

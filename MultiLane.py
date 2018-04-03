@@ -2,7 +2,6 @@ import vehicle
 import random
 import Lane
 import Queue
-import math
 
 
 class MultiLane:
@@ -10,12 +9,12 @@ class MultiLane:
         self.nLane = nLane;
         self.lanes = [];
         self.exitPt = exitPt
-        self.probRight = 0.8;  # the probability to turn the right lane
-        self.probLeft = 0.7;  # the probability to turn the left lane
+        self.probRight = 0.7;  # the probability to turn the right lane
+        self.probLeft = 0.6;  # the probability to turn the left lane
         self.q = Queue.Queue()
         for i in range(nLane):
-            self.lanes.append(Lane.Lane(l, vMax1, 0.08))
-        self.lanes.append(Lane.Lane(l2, vMax2, 0.04))
+            self.lanes.append(Lane.Lane(l, vMax1, 0.1))
+        self.lanes.append(Lane.Lane(l2, vMax2, 0.05))
     
     # Every second, update vehicles speed of all lanes
     # if speed is lower than the previous vehicle and lower than max speed, then speed up;
@@ -107,7 +106,7 @@ class MultiLane:
         if rlane.cells[k] is not None and random.random() < prob:
             car = rlane.cells[k]
             if flag and self.q.empty():
-                car.speed = min(car.speed * 0.8, elane.vMax)    # new hwy is not blocked
+                car.speed = min(car.speed * 0.9, elane.vMax)    # new hwy is not blocked
             else:
                 car.speed = min(car.speed * 0.1, elane.vMax)    # new hwy is blocked
             self.q.put(car)
@@ -125,7 +124,7 @@ class MultiLane:
     
     def enterAtStart(self, prob):
         for lane in self.lanes:
-            for i in range (10):
+            for i in range (3):
                 if lane.cells[i] == None:
                     if random.random () < prob:
                         lane.addCar (vehicle.Vehicle (), i)
@@ -134,7 +133,7 @@ class MultiLane:
     
     def exitAtEnd(self):
         for lane in self.lanes:
-            for i in range(len(lane.cells) - 5, len(lane.cells)):
+            for i in range(len(lane.cells) - 6, len(lane.cells)):
                 if lane.cells[i] is not None:
                     lane.RemoveCar(i)
 

@@ -59,9 +59,9 @@ class UI(object):
         for i, lane in enumerate(hwy.lanes[:-1]):
             for j, cell in enumerate(lane.cells):
                 if cell is not None:
-                    x.append(12 + i*20)
+                    x.append(20 + i*30)
                     y.append(j*5)
-        x0 = i * 20 + 14
+        x0 = i * 30 + 25
         y0 = length / 2 * 5
 
         for k, cell in enumerate(hwy.lanes[-1].cells):
@@ -74,10 +74,10 @@ class UI(object):
         for i, lane in enumerate(hwyL.lanes[:-1]):
             for j, cell in enumerate(lane.cells):
                 if cell is not None:
-                    xx.append(-12 - i*20)
+                    xx.append(-20 - i*30)
                     yy.append(length*5 - j*5)
                     
-        x0 = -12 - i*20 - 14
+        x0 = - i*30 - 25
         y0 = length * 5 * 0.8
 
         for k, cell in enumerate(hwy.lanes[-1].cells):
@@ -93,7 +93,7 @@ class UI(object):
         self.figure.add_subplot(111).scatter(y, x, s = 0.5, color='b')
         self.figure.add_subplot(111).scatter(yy, xx, s=0.5, color='r')
         axes = self.figure.gca()
-        axes.set_ylim ([-600, 350])
+        axes.set_ylim ([-700, 400])
         axes.set_xlim([0, 3000])
         self.canvas.show()
 

@@ -11,7 +11,7 @@ def main():
     def run():
         highwayLength = 3000
         vMax1 = 45
-        vMax2 = 25
+        vMax2 = 35
         nLane = 3
 
         highways = HighWay.HighWay(highwayLength, nLane, vMax1, vMax2)
