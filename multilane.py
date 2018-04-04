@@ -1,6 +1,6 @@
 import vehicle
 import random
-import Lane
+import lane
 import Queue
 
 
@@ -13,8 +13,8 @@ class MultiLane:
         self.probLeft = 0.6;  # the probability to turn the left lane
         self.q = Queue.Queue()
         for i in range(nLane):
-            self.lanes.append(Lane.Lane(l, vMax1, 0.1))
-        self.lanes.append(Lane.Lane(l2, vMax2, 0.05))
+            self.lanes.append(lane.Lane(l, vMax1, 0.1))
+        self.lanes.append(lane.Lane(l2, vMax2, 0.05))
     
     # Every second, update vehicles speed of all lanes
     # if speed is lower than the previous vehicle and lower than max speed, then speed up;

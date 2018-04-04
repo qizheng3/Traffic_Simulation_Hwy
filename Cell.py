@@ -1,10 +1,10 @@
 class Cell:
-    def __init__(self, gridSize, xCoord, yCoord):
+    def __init__(self, ID， xCoord, yCoord):
         self.x = xCoord
         self.y = yCoord
-        self.gridSize = gridSize
+        self.ID = ID
     
-    def resetCell(self, gridSize, xCoord, yCoord):
+    def resetCell(self, ID, xCoord, yCoord):
         self.x = xCoord
         self.y = yCoord
-        self.gridSize = gridSize
+        self.ID = ID

@@ -5,7 +5,6 @@ from matplotlib.figure import Figure
 from Tkinter import *
 
 import Queue
-import threading
 import warnings
 
 from numpy import arange, sin, pi
