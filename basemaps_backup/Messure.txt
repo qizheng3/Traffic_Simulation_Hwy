@@ -1,0 +1,19 @@
+Ruler -> Real
+93px -> 500ft
+
+Frame
+----------------
+Horizontal
+Bottom: 511, 543, 557
+Level 2: 461
+Level 3: 344
+Level 4: 112
+Level 5: 34
+
+
+Vertical
+Level 2: 170
+Level 3: 190
+Level 4: 533
+Level 5: 605
+Top: 660

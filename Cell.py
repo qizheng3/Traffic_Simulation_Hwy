@@ -1,10 +1,15 @@
+from config import *
+
 class Cell:
-    def __init__(self, ID， xCoord, yCoord):
+    def __init__(self, id, (xCoord, yCoord)):
+        self.id = id
         self.x = xCoord
         self.y = yCoord
-        self.ID = ID
-    
-    def resetCell(self, ID, xCoord, yCoord):
+
+    def reset_cell(self, id, xCoord, yCoord):
+        self.id = id
         self.x = xCoord
         self.y = yCoord
-        self.ID = ID
+
+    def get_param(self):
+        return self.id, self.x, self.y

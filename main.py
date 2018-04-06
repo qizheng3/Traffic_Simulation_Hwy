@@ -3,8 +3,7 @@ import highway
 import lane
 import ui
 import threading
-import global_param
-
+from config import *
 
 def run(GUI):
     highwayLength = 3000
@@ -31,14 +30,15 @@ def run(GUI):
         GUI.display(highways)
 
 def main():
-    GUI = ui.UI()
+    # GUI = ui.UI()
+    #
+    # workerThread = threading.Thread(target=run(GUI))
+    # workerThread.setDaemon(True)
+    # workerThread.start()
+    #
+    # GUI.mainloop()
 
-    workerThread = threading.Thread(target=run(GUI))
-    workerThread.setDaemon(True)
-    workerThread.start()
 
-    GUI.mainloop()
-    
 
 
 if __name__ == '__main__':

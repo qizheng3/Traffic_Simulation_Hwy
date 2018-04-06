@@ -60,6 +60,7 @@ class UI(object):
                 if cell is not None:
                     x.append(20 + i*30)
                     y.append(j*5)
+
         x0 = i * 30 + 25
         y0 = length / 2 * 5
 
@@ -87,25 +88,24 @@ class UI(object):
                
         return x, y, xx, yy
 
-    def drawFrame(self, x, y, xx, yy):
+    def drawFrame(self, x, y):
         self.figure.clf()
         self.figure.add_subplot(111).scatter(y, x, s = 0.5, color='b')
-        self.figure.add_subplot(111).scatter(yy, xx, s=0.5, color='r')
         axes = self.figure.gca()
-        axes.set_ylim ([-700, 400])
-        axes.set_xlim([0, 3000])
+        # axes.set_ylim ([-700, 400])
+        # axes.set_xlim([0, 3000])
         self.canvas.show()
 
     def processMessage(self):
         self.root.after(self.refreshInterval, self.processMessage) # check message queue every interval
         while not self.messageQueue.empty():
-            x, y, xx, yy = self.messageQueue.get()
-            self.drawFrame(x, y, xx, yy)
+            x, y = self.messageQueue.get()
+            self.drawFrame(x, y)
             break        
 
     def display(self, highways):
         x, y, xx, yy = self.processData(highways)
-        self.messageQueue.put((x, y, xx, yy))
+        self.messageQueue.put((x, y))
         
     def mainloop(self):
         self.root.mainloop()
