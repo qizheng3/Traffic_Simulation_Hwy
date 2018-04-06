@@ -1,6 +1,5 @@
 import vehicle
 import random
-import cell
 
 cell_size = 5
 
@@ -11,7 +10,7 @@ class Lane:
         self.density = density  # initialize the vehicle density of one highway
         self.vMax = vMax  # max speed for all vehicles in this lane
         self.size = len(base_array)	# initialize the number of cells of one highway (unit length: 10 meters) #### updated: 5m
-        self.cells = [cell.Cell(base_array[i]) for ]  # initialize the cell array
+        self.cells = [None] * self.size  # initialize the cell array
         
         # initialize some vehicles in the lane
         for i in range(int(self.density * self.size)):

@@ -3,7 +3,9 @@ import highway
 import lane
 import ui
 import threading
-from config import *
+import settings
+import utility
+
 
 def run(GUI):
     highwayLength = 3000
@@ -30,6 +32,7 @@ def run(GUI):
         GUI.display(highways)
 
 def main():
+    
     # GUI = ui.UI()
     #
     # workerThread = threading.Thread(target=run(GUI))
@@ -37,6 +40,10 @@ def main():
     # workerThread.start()
     #
     # GUI.mainloop()
+    
+    settings.init()
+    utility.base_map_plotter(settings.UI_BASEMAP)
+    
 
 
 

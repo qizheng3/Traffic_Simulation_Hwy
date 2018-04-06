@@ -1,11 +1,12 @@
 import random
 
 class Vehicle:
-    def __init__(self):
+    def __init__(self, origin):
         # there are three types of vehicles. Their max speed is 25m/s, 30m/s, 35m/s, respectively
         # the probability of this three types is: 0.2, 0.5, 0.3
-        self.vMax = 35;
-        rand = random.random();
+        self.origin = origin
+        self.vMax = 35
+        rand = random.random()
         if (rand <= 0.2):
             self.vMax = 25;
         elif (rand <= 0.7):
