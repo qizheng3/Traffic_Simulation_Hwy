@@ -1,18 +1,10 @@
-from settings import *
+import cell
+import settings
 
-def ppt():
-    global MAPS
-    for pr in MAPS:
-        plt.scatter ([x for (x, _) in pr], [y for (_, y) in pr])
-    plt.show ()
+settings.init()
+basemap = settings.UI_BASEMAP
+road = basemap[1]
 
-    pr = MAPS[0]
-    plt.plot([pr[0][0], pr[JOIN_ID[0]][0]], [pr[0][1], pr[JOIN_ID[0]][1]])
-    plt.plot([pr[JOIN_ID[0]+1][0], pr[JOIN_ID[1]][0]], [pr[JOIN_ID[0]+1][1], pr[JOIN_ID[1]][1]])
-    plt.plot([pr[JOIN_ID[1] + 1][0], pr[JOIN_ID[2]][0]], [pr[JOIN_ID[1] + 1][1], pr[JOIN_ID[2]][1]])
-    plt.plot([pr[JOIN_ID[2] + 1][0], pr[-1][0]], [pr[JOIN_ID[2] + 1][1], pr[-1][1]])
-    plt.show()
-    # print pr[0]
-    
-    
-ppt()
+foo = [cell.Cell(x, y) for (x, y) in road]
+
+print(foo[2].x, foo[2].y)

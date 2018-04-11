@@ -31,6 +31,7 @@ def run(GUI):
         # send data to UI
         GUI.display(highways)
 
+
 def main():
     
     # GUI = ui.UI()
@@ -42,10 +43,10 @@ def main():
     # GUI.mainloop()
     
     settings.init()
-    utility.base_map_plotter(settings.UI_BASEMAP)
-    
-
-
+    basemap = settings.UI_BASEMAP
+    new_map = [lane.Lane(r, 45, 0.3) for r in basemap]
+    utility.realtime_plotter(new_map)
+    utility.base_map_plotter(basemap)
 
 
 if __name__ == '__main__':
