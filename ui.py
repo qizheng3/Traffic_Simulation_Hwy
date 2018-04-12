@@ -13,7 +13,7 @@ from time import sleep
 class UI(object):
     # UI config
     programTitle = "Traffic Simulation Software Version 1.0"
-    animationSize = (12, 3)
+    animationSize = (10, 10)
     animationDpi = 100
     refreshInterval = 500 # refresh frame interval in milli-second
     
@@ -40,71 +40,28 @@ class UI(object):
         tmpcnf = '%dx%d+%d+%d' % (curWidth, curHeight, (scnWidth - curWidth) / 2, (scnHeight - curHeight) / 2)
         self.root.geometry(tmpcnf)
         # ===== end quote =====
-        
+
         # set message queue
-        self.messageQueue = Queue.Queue()
-        self.processMessage()
+        self.messageQueue = Queue.Queue ()
+        self.processMessage ()
         
-    def processData(self, highways):
-        x = []
-        y = []
-        xx = []
-        yy = []
-        argR = 0.2
-        argL = 0.3
-        
-        hwy = highways.RL
-        length = len(hwy.lanes[0].cells)
-        for i, lane in enumerate(hwy.lanes[:-1]):
-            for j, cell in enumerate(lane.cells):
-                if cell is not None:
-                    x.append(20 + i*30)
-                    y.append(j*5)
-
-        x0 = i * 30 + 25
-        y0 = length / 2 * 5
-
-        for k, cell in enumerate(hwy.lanes[-1].cells):
-            if cell is not None:
-                dist = k * 5
-                x.append(dist * math.sin(argR) + x0)
-                y.append(dist * math.cos(argR) + y0)
-
-        hwyL = highways.LL
-        for i, lane in enumerate(hwyL.lanes[:-1]):
-            for j, cell in enumerate(lane.cells):
-                if cell is not None:
-                    xx.append(-20 - i*30)
-                    yy.append(length*5 - j*5)
-                    
-        x0 = - i*30 - 25
-        y0 = length * 5 * 0.8
-
-        for k, cell in enumerate(hwy.lanes[-1].cells):
-            if cell is not None:
-                dist = k * 5
-                xx.append(- dist * math.sin(argL) + x0)
-                yy.append(- dist * math.cos(argL) + y0)
-               
-        return x, y, xx, yy
 
     def drawFrame(self, x, y):
         self.figure.clf()
-        self.figure.add_subplot(111).scatter(y, x, s = 0.5, color='b')
+        self.figure.add_subplot(111).scatter(x, y, s = 1, color='b')
         axes = self.figure.gca()
-        # axes.set_ylim ([-700, 400])
-        # axes.set_xlim([0, 3000])
+        axes.set_xlim ([-500, 3750])
+        axes.set_ylim ([-500, 3750])
         self.canvas.show()
 
-    def processMessage(self):
-        self.root.after(self.refreshInterval, self.processMessage) # check message queue every interval
-        while not self.messageQueue.empty():
-            x, y = self.messageQueue.get()
+    def processMessage(self, q):
+        self.root.after(self.refreshInterval, q) # check message queue every interval
+        while not q.empty():
+            x, y = q.get()
             self.drawFrame(x, y)
-            break        
-
-    def display(self, highways):
-        x, y, xx, yy = self.processData(highways)
+            break
+    
+    def display(self, x, y):
         self.messageQueue.put((x, y))
         
     def mainloop(self):

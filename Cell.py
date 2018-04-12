@@ -4,7 +4,6 @@ class Cell:
         self.y = y
         self.road = road
         self.veh = veh
-        self.state = None
     
     def update(self, x=None, y=None, road=None, veh=None):
         if x is not None:

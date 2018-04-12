@@ -14,6 +14,7 @@ class MultiLane:
         self.lanes = [lane.Lane(basemap[i], vMaxes[i], density) for i in range(5)]
         self.entrances = [lane.Lane(basemap[5+i], vMaxes[5], density) for i in range(2)]
         self.exit = lane.Lane(basemap[-1], vMaxes[6], density)
+        self.movement = [[None for _ in range(len(l.cells))] for l in self.lanes]
         self.ex = Queue.Queue()
         self.en1 = Queue.Queue()
         self.en2 = Queue.Queue()
@@ -39,46 +40,91 @@ class MultiLane:
         for i in range(-1, -7, -1):
             if self.exit.cells[i].veh is not None:
                 self.exit.removeCar(i)
-
+    
     def check_change_left(self):
-        for i in range (1, 5):
+        print
+        for i in range(1, len(self.lanes)):
             lanex = self.lanes[i]
-            for j in range (11, len (lanex.cells) - 11):
-                if lanex.cells[j].veh is not None:
-                    car = lanex.cells[j].veh
-                else:
+            print len(self.lanes[i].cells)
+            for j in range(11, len(lanex.cells)-11):
+                car = lanex.cells[j].veh
+                if car is None:
                     continue
-                # switch lanes allowed
+                # check lane conditions for left switch
                 if car.speed <= 0.7 * car.vMax:
                     leftLaneIsEmpty = True
-                    for k in range (-10, 6):
-                        # if there is no vehicle between 100ft behind and 60ft ahead
-                        if j + k >= 0 and j + k < len (self.lanes[i-1].cells) and self.lanes[i - 1].cells[j + k].veh is not None:
+                    # if there is no vehicle between 100 ft behind and 50 ft ahead
+                    k1 = int (100 / self.cell_size)
+                    k2 = int (50 / self.cell_size)
+                    for k in range (-k1, k2 + 1):
+                        # if there is no vehicle between 100 ft behind and 50 ft ahead
+                        if self.lanes[i - 1].cells[j + k].veh is not None:
                             leftLaneIsEmpty = False
                             break
-                    if leftLaneIsEmpty and random.random () < 0.6:
-                        lane.RemoveCar (j)
-                        self.lanes[i - 1].addCar(car, j)
+                    if leftLaneIsEmpty and random.random () < self.lanes[i].prob_left:
+                        if self.movement[i - 1][j] is None:
+                            self.movement[i - 1][j] = (i, j)
+                        elif random.random () < 0.5:
+                            self.movement[i-1][j] = (i, j)
+
+                # for j in range (len (self.lanes[4].cells)):
+                #     if self.lanes[4].cells[j].veh is None or self.lanes[4].cells[j].veh is not None:
+                #         continue
+                #     k3 = int (60 / self.cell_size)
+                #     k4 = int (40 / self.cell_size)
+                #     leftLaneIsEmpty = True
+                #     if j >= settings.JOIN_ID[0] and j < settings.JOIN_ID[1] or j > settings.JOIN_ID[2]:
+                #         prob = self.lanes[-1].prob_left
+                #     else:
+                #         prob = 0.7
+                #     for k in range (-k3, k4 + 1):
+                #         if self.lanes[-1].cells[i + k].veh is not None:
+                #             leftLaneIsEmpty = False
+                #             break
+                #     if leftLaneIsEmpty and random.random () < prob:
+                #         self.movement[-2][j] = (-1, j)
+
 
     def check_change_right(self):
-        for i in range (4):
-            lanex = self.lanes[i]
-            for j in range (len (lanex.cells)):
-                if lanex.cells[j].veh is not None:
-                    car = lanex.cells[j].veh
-                else:
+        for i in range(len(self.lanes)-1):
+            for j in range(11, len(self.lanes[i].cells)-11):
+                car = self.lanes[i].cells[j].veh
+                if car is None:
                     continue
-                # if this car is allowed to switch the lane
+                # check lane conditions for left-switch
                 if car.speed <= 0.7 * car.vMax:
                     rightLaneIsEmpty = True
-                    for k in range (-10, 6):
-                        if j + k >= 0 and j + k < len (self.lanes[i + 1].cells) and self.lanes[i + 1].cells[j + k].veh is not None:
-                            # if there is no vehicle between 100m behind and ahead
+                    # if there is no vehicle in the range [100 ft behind ~ 50 ft ahead]
+                    k1 = int (100 / self.cell_size)
+                    k2 = int (50 / self.cell_size)
+                    for k in range (-k1, k2 + 1):
+                        # if there is no vehicle between 100 ft behind and 50 ft ahead
+                        if self.lanes[i + 1].cells[j + k].veh is not None:
                             rightLaneIsEmpty = False
                             break
-                    if rightLaneIsEmpty and random.random () < 0.6:
-                        lane.RemoveCar (j)
-                        self.lanes[i + 1].addCar (car, j)
+                    if rightLaneIsEmpty and random.random () < self.lanes[i].prob_right:
+                        if self.movement[i + 1][j] is None:
+                            self.movement[i + 1][j] = (i, j)
+                        elif random.random () < 0.5:
+                            self.movement[i + 1][j] = (i, j)
+            
+            # lane3 = self.lanes[3]
+            # for j in range(len(lane3.cells)):
+            #     if lane3.cells[j].veh is None or self.lanes[-1].cells[j].veh is not None:
+            #         continue
+            #     k3 = int(60 / self.cell_size)
+            #     k4 = int(40 / self.cell_size)
+            #     prob = lane3.prob_right
+            #     if j > settings.JOIN_ID[1] and j < settings.JOIN_ID[2] + 1:
+            #         prob = 0
+            #     rightLaneIsEmpty = True
+            #     for k in range(-k3, k4+1):
+            #         if lane3.cells[j + k].veh is not None:
+            #             rightLaneIsEmpty = False
+            #             break
+            #     if rightLaneIsEmpty and random.random () < prob:
+            #             self.movement[-1][j] = (-2, j)
+
 
     def update_speed_util(self, lanex, lim, lookahead, vlim, dv):
         curr = 0
@@ -117,14 +163,14 @@ class MultiLane:
     # refresh frequency: 0.5 sec
     def update_speed(self):
         
-        # # first update positions (lane switch, no advancing)
-        # for i in range(len(self.movement)):
-        #     for j in range(len(self.movement[i])):
-        #         if self.movement[i][j] is not None:
-        #             ri, rj = self.movement[i][j]
-        #             temp_car = self.lanes[ri].removeCar(rj)
-        #             self.lanes[i].addCar(temp_car, j)
-        #             self.movement[i][j] = None
+        # first update positions (lane switch, no advancing)
+        for i in range(len(self.movement)):
+            for j in range(len(self.movement[i])):
+                if self.movement[i][j] is not None:
+                    ri, rj = self.movement[i][j]
+                    temp_car = self.lanes[ri].removeCar(rj)
+                    self.lanes[i].addCar(temp_car, j)
+                    self.movement[i][j] = None
         
         # then update speed, speed of any vehicle is only affected by
         # a vehicle car <= 120ft (lookahead 120ft ~ <= 1.25 sec to arrive) away
@@ -220,53 +266,3 @@ class MultiLane:
         res.append(self.exit)
         return res
 
-    # def check_change_left(self):
-    #     print
-    #     for i in range (1, len (self.lanes)):
-    #         lanex = self.lanes[i]
-    #         print len (self.lanes[i].cells)
-    #         for j in range (11, len (lanex.cells) - 11):
-    #             car = lanex.cells[j].veh
-    #             if car is None:
-    #                 continue
-    #             # check lane conditions for left switch
-    #             if car.speed <= 0.7 * car.vMax:
-    #                 leftLaneIsEmpty = True
-    #                 # if there is no vehicle between 100 ft behind and 50 ft ahead
-    #                 k1 = int (100 / self.cell_size)
-    #                 k2 = int (50 / self.cell_size)
-    #                 for k in range (-k1, k2 + 1):
-    #                     # if there is no vehicle between 100 ft behind and 50 ft ahead
-    #                     if self.lanes[i - 1].cells[j + k].veh is not None:
-    #                         leftLaneIsEmpty = False
-    #                         break
-    #                 if leftLaneIsEmpty and random.random () < self.lanes[i].prob_left:
-    #                     if self.movement[i - 1][j] is None:
-    #                         self.movement[i - 1][j] = (i, j)
-    #                     elif random.random () < 0.5:
-    #                         self.movement[i - 1][j] = (i, j)
-    #
-    # def check_change_right(self):
-    #     for i in range (len (self.lanes) - 1):
-    #         for j in range (11, len (self.lanes[i].cells) - 11):
-    #             car = self.lanes[i].cells[j].veh
-    #             if car is None:
-    #                 continue
-    #             # check lane conditions for left-switch
-    #             if car.speed <= 0.7 * car.vMax:
-    #                 rightLaneIsEmpty = True
-    #                 # if there is no vehicle in the range [100 ft behind ~ 50 ft ahead]
-    #                 k1 = int (100 / self.cell_size)
-    #                 k2 = int (50 / self.cell_size)
-    #                 for k in range (-k1, k2 + 1):
-    #                     # if there is no vehicle between 100 ft behind and 50 ft ahead
-    #                     if self.lanes[i + 1].cells[j + k].veh is not None:
-    #                         rightLaneIsEmpty = False
-    #                         break
-    #                 if rightLaneIsEmpty and random.random () < self.lanes[i].prob_right:
-    #                     if self.movement[i + 1][j] is None:
-    #                         self.movement[i + 1][j] = (i, j)
-    #                     elif random.random () < 0.5:
-    #                         self.movement[i + 1][j] = (i, j)
-    #
-    #

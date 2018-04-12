@@ -36,10 +36,10 @@ def init():
     # print section_lengths
     
     cell_nums = [int(l / CELL_SIZE + 0.5) for l in section_lengths]
-    print cell_nums
+    # print cell_nums
     
     JOIN_ID = [cell_nums[0], cell_nums[0] + int (cell_nums[1] * join_pos[1]), cell_nums[0] + cell_nums[1]]
-    # print JOIN_ID
+    print JOIN_ID
     
     hwyx = [HWY75[0][0]]
     hwyy = [HWY75[0][1]]

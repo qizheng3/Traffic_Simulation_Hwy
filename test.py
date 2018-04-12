@@ -1,10 +1,11 @@
-import cell
-import settings
-
-settings.init()
-basemap = settings.UI_BASEMAP
-road = basemap[1]
-
-foo = [cell.Cell(x, y) for (x, y) in road]
-
-print(foo[2].x, foo[2].y)
+class randTest:
+    def tester(self, matrix):
+        for i in range(len(matrix)):
+            matrix[i] = i
+            
+            
+sol = randTest()
+m = [10, 20, 30, 40, 50]
+sol.tester(m)
+for i in m:
+    print i

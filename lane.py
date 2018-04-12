@@ -5,7 +5,7 @@ import settings
 
 # one single lane
 class Lane:
-    def __init__(self, coords, vMax, density=0.1, prob_left=0, prob_right=0):
+    def __init__(self, coords, vMax, density=0.1, prob_left=0.6, prob_right=0.6):
         # density = total number of vehicles / total number of cells
         self.density = density  # initialize the vehicle density of one highway
         self.vMax = vMax  # max speed for all vehicles in this lane
