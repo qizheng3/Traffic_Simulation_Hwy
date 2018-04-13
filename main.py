@@ -8,7 +8,7 @@ import utility
 
 
 def run(GUI):
-    iteration = 10
+    iteration = 100
     vMaxes = [80, 80, 80, 80, 70, 50, 50]
     
     hwy = multilane.MultiLane(settings.UI_BASEMAP, vMaxes)
@@ -32,13 +32,13 @@ def run(GUI):
         GUI.display(x, y)
 
 def test_run():
-    iteration = 10
+    iteration = 20
     vMaxes = [80, 80, 80, 80, 70, 50, 50]
     
     hwy = multilane.MultiLane (settings.UI_BASEMAP, vMaxes)
     for i in range (iteration):
         hwy.exit_at_end ()
-        hwy.enter_at_start (0.6, 0.4)
+        hwy.enter_at_start (0.4, 0.3)
         hwy.check_change_left ()
         hwy.check_change_right ()
         hwy.update_speed ()
@@ -63,14 +63,12 @@ def test_run():
 
 def main():
     settings.init()
-    GUI = ui.UI()
-
-    workerThread = threading.Thread(target=run(GUI))
-    workerThread.setDaemon(True)
-    workerThread.start()
-
-    GUI.mainloop()
-    # test_run()
+    # GUI = ui.UI()
+    # workerThread = threading.Thread(target=run(GUI))
+    # workerThread.setDaemon(True)
+    # workerThread.start()
+    # GUI.mainloop()
+    test_run()
 
 if __name__ == '__main__':
     main()

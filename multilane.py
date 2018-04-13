@@ -268,5 +268,3 @@ class MultiLane:
     #                         self.movement[i + 1][j] = (i, j)
     #                     elif random.random () < 0.5:
     #                         self.movement[i + 1][j] = (i, j)
-    #
-    #
