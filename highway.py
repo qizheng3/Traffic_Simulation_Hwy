@@ -1,11 +1,11 @@
-import MultiLane
+import multilane
 
 
 class HighWay:
     def __init__(self, highwayLength, nLane, vMax1, vMax2):
-        self.RL = MultiLane.MultiLane(highwayLength, 1530, nLane, vMax1, vMax2, 0.6);
-        self.LL = MultiLane.MultiLane(highwayLength, 2500, nLane, vMax1, vMax2, 0.3);
-    
+        self.multiway = multilane.MultiLane (5, 8, 0.6)
+        
+
     def updateStates(self):
         for hwy in (self.LL, self.RL):
             hwy.updateSpeed()
