@@ -7,27 +7,23 @@ import highway
 
 
 settings.init()
-iteration = 100
+iteration = 1
 hwy = highway.HighWay ()
 basemap = settings.UI_BASEMAP
 
 
-for i in range (iteration):
+iteration = 10
+hwy = highway.HighWay ()
+basemap = settings.UI_BASEMAP
+for iter in range (iteration):
     hwy.update_states ()
-    # x = [[] for _ in range (len (res))]
-    # y = [[] for _ in range (len (res))]
+    res1 = hwy.multiway.lanes
+    res2 = hwy.mergelane.lanes
+    res3 = hwy.exitway.lanes
 
-res = hwy.multiway.lanes
-
-print res
-
-# print len(res)
-# print "-----------------------------"
-# for lane in res:
-#     print(len(lane.cells))
-
-# print
-# print "-----------------------------"
-# print len(basemap)
-# for b in basemap:
-#     print(len(b))
+for j, c in enumerate (res3.cells):
+    if c != None:
+        id = c.id
+        print id
+        
+print len(res3.cells)

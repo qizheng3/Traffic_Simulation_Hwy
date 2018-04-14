@@ -15,22 +15,15 @@ class ExitLane:
         self.lanes.update_speed (3, 70, 50, 1, end=True)
     
     def update_position(self):
-        for lane in self.lanes:
-            lane.update_position (end=True, end_pts=3)
+        self.lanes.update_position (end=True, end_pts=3)
     
     def exit_at_end(self):
-       for i in range(len(self.lanes) - 5, len(self.lanes)):
-            if lane.cells[i] is not None:
-                    lane.RemoveCar(i)
-    
-    def enter_at_start(self, prob):
-        for j in range (2):
-            if lane.cells[j] == None:
-                if random.random () < prob:
-                    lane.addCar(vehicle.Vehicle(7), j)
+       for i in range(len(self.lanes.cells) - 5, len(self.lanes.cells)):
+            if self.lanes.cells[i] is not None:
+                    self.lanes.RemoveCar(i)
+
     
     def update_states(self):
-        self.enter_at_start(0.7)
         self.exit_at_end()
         self.update_speed()
         self.update_position()

@@ -11,14 +11,16 @@ class Lane:
         self.size = l  # initialize the number of cells of one highway (unit length: 10 meters) #### updated: 5m
         self.cells = [None] * self.size  # initialize the cell array
         self.cell_size = settings.CELL_SIZE
-        
+        base = 0
+        if id > 4:
+            base = 4
         # initialize some vehicles in the lane
         randvar = int(l/100)
         num = min(int(density * l) + random.randint(-randvar, randvar), l-22)   # adding some variance in the distribution
         pos = random.sample(xrange(6, l-6), num)
         
         for p in pos:
-            self.cells[p] = vehicle.Vehicle(id)
+            self.cells[p] = vehicle.Vehicle(base=base, id=id)
         
         self.vNum = num  # number of vehicles in this lane
         self.hasAccident = False  # one lane has no car accidents at the beginning

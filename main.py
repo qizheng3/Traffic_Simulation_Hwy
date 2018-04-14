@@ -1,10 +1,11 @@
-import vehicle
-import lane
-import ui
+
 import threading
-import settings
-import multilane
+
 import highway
+import multilane
+import settings
+import ui
+
 
 def run(GUI):
     iteration = 1000
@@ -41,8 +42,9 @@ def test_run(GUI):
         hwy.update_states ()
         res1 = hwy.multiway.lanes
         res2 = hwy.mergelane.lanes
-        x = [[] for _ in range (7)]
-        y = [[] for _ in range (7)]
+        res3 = hwy.exitway.lanes
+        x = [[] for _ in range (8)]
+        y = [[] for _ in range (8)]
         for i, lanex in enumerate (res1):
             for j, c in enumerate (lanex.cells):
                 if c != None:
@@ -58,7 +60,14 @@ def test_run(GUI):
                     xi, yi = basemap[i+5][j]
                     x[id].append (xi)
                     y[id].append (yi)
-        
+                    
+        for j, c in enumerate(res3.cells):
+            if c != None:
+                id = c.id
+                xi, yi = basemap[7][j]
+                x[id].append (xi)
+                y[id].append (yi)
+                
         # send data to UI
         GUI.sendMessage (x, y)
 

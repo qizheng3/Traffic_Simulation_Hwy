@@ -83,7 +83,7 @@ class MultiLane:
             for j in range (2):
                 if lane.cells[j] == None:
                     if random.random () < prob:
-                        lane.addCar(vehicle.Vehicle(i), j)
+                        lane.addCar(vehicle.Vehicle(base=0, id=i), j)
                         break
   
     

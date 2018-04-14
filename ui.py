@@ -51,10 +51,9 @@ class UI (object):
 
     def drawFrame(self, x, y, num):
         self.figure.clf ()
-        # colors = ['b', 'r', 'm', 'g', 'k']
+        colors = ['b', 'r', 'm', "#00EEEE", 'g', 'k', "#8B2323", "#FF9912"]
         for i in range(num):
-            self.figure.add_subplot (111).scatter(x[i], y[i], s=1.5)
-            # self.figure.add_subplot (111).scatter (x[i], y[i], s=1.5, color=colors[i])
+            self.figure.add_subplot (111).scatter (x[i], y[i], s=1.5, color=colors[i])
         axes = self.figure.gca ()
         axes.set_ylim ([-500, 3750])
         axes.set_xlim ([-500, 3750])
