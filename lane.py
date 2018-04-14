@@ -1,10 +1,12 @@
 import vehicle
 import random
 import settings
+import time
 
 # one single lane
 class Lane:
     def __init__(self, l, vMax, density, id):
+        random.seed(time.time())
         # density = total number of vehicles / total number of cells
         self.density = density  # initialize the vehicle density of one highway
         self.vMax = vMax  # max speed for all vehicles in this lane

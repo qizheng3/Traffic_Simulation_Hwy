@@ -1,4 +1,7 @@
 import random
+import time
+random.seed(time.time())
+
 
 class Vehicle:
     def __init__(self, base=0, id=-1):

@@ -23,13 +23,13 @@ def init():
     join_pos = [1, 0.33, 0]
     traffic_lane = [985, 910]
     n_lanes = 5
-    lane_offset = [-35, -25]
+    lane_offset = [-40, -25]
     # exit_offset = [20, 0]
     exit_offset = [15, 0]
 
     CELL_SIZE = 10
     HWY75 = [(1144, 917), (1077, 695), (734, 339), (551, 219)]
-    SUB_HWY = [(1184, 918), (1239, 690), (631, 160)]
+    SUB_HWY = [(1284, 918), (1239, 690), (631, 160)]
 
     x0 = origin[0]
     y0 = origin[1]

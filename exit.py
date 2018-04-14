@@ -21,7 +21,6 @@ class ExitLane:
        for i in range(len(self.lanes.cells) - 5, len(self.lanes.cells)):
             if self.lanes.cells[i] is not None:
                     self.lanes.RemoveCar(i)
-
     
     def update_states(self):
         self.exit_at_end()

@@ -4,10 +4,10 @@ import lane
 import Queue
 import settings
 
+# Assume traffic jam at position index=250, on lane 2 and 3
 class MultiLane:
-    def __init__(self, num_L, vMax, exitPt):
+    def __init__(self, num_L, vMax):
         self.lanes = [];
-        self.exitPt = exitPt
         self.probRight = 0.9;  # the probability to turn the right lane
         self.probLeft = 0.9;  # the probability to turn the left lane
         self.num_L = num_L
@@ -15,8 +15,9 @@ class MultiLane:
         self.cell_size = settings.CELL_SIZE
         self.vMax = vMax
         L = settings.L
+        den = [0.09, 0.08, 0.07, 0.07, 0.07]
         for i in range(num_L):
-            self.lanes.append(lane.Lane(L, vMax, 0.05, i))
+            self.lanes.append(lane.Lane(L, vMax, den[i], i))
      
     def update_speed(self):
         for lane in self.lanes:
@@ -83,8 +84,7 @@ class MultiLane:
             for j in range (2):
                 if lane.cells[j] == None:
                     if random.random () < prob:
-                        lane.addCar(vehicle.Vehicle(base=0, id=i), j)
-                        break
+                        lane.addCar(vehicle.Vehicle(base=0, id=i), j*3)
   
     
     def exit_at_end(self):
@@ -94,11 +94,15 @@ class MultiLane:
                     lane.RemoveCar(i)
 
 
-    def update_states(self):
+    def update_states(self, iter=0, blocked=-1):
         self.exit_at_end ()
-        self.enter_at_start (0.4)
-        self.change_left ()
-        self.change_right ()
+        self.enter_at_start (0.5)
+        if (iter % 2 == 0):
+            self.change_right ()
+            self.change_left ()
+        else:
+            self.change_left ()
+            self.change_right ()
         self.update_speed ()
         self.update_position ()
         

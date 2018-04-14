@@ -5,9 +5,10 @@ import highway
 import multilane
 import settings
 import ui
+import time
+import random
 
-
-def run(GUI):
+def test_run(GUI):
     iteration = 1000
 
     hwy = multilane.MultiLane(5, 8, 0.6)
@@ -34,12 +35,17 @@ def run(GUI):
         GUI.sendMessage (x, y)
 
 
-def test_run(GUI):
-    iteration = 1000
-    hwy = highway.HighWay ()
+def run(GUI):
+    iteration = 2000
+    blocked = False
+    hwy = highway.Highway ()
     basemap = settings.UI_BASEMAP
     for iter in range (iteration):
-        hwy.update_states ()
+        if iter > 300 and iter < 300 + blocked:
+            blocked = True
+        else:
+            blocked = False
+        hwy.update_states (iter=iter, block=blocked)
         res1 = hwy.multiway.lanes
         res2 = hwy.mergelane.lanes
         res3 = hwy.exitway.lanes
@@ -75,8 +81,9 @@ def test_run(GUI):
 
 def main():
     settings.init()
+    random.seed(time.time ())
     GUI = ui.UI()
-    workerThread = threading.Thread(target=test_run, args=(GUI,))
+    workerThread = threading.Thread(target=run, args=(GUI,))
     workerThread.setDaemon(True)
     workerThread.start()
     # run(GUI)

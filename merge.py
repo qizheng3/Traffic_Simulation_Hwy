@@ -21,10 +21,11 @@ class MergeLane:
 
     def enter_at_start(self, prob):
         for i, lane in enumerate(self.lanes):
-            if lane.cells[0] == None and random.random() < prob:
-                lane.addCar(vehicle.Vehicle(base=4, id=i+5), 0)
+            for j in range(3):
+                if random.random() < prob:
+                    lane.addCar(vehicle.Vehicle(base=4, id=i+5), 4*j)
 
     def update_states(self):
-        self.enter_at_start (0.6)
+        self.enter_at_start (0.5)
         self.update_speed ()
         self.update_position ()
