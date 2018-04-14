@@ -4,7 +4,7 @@ import lane
 import Queue
 import settings
 
-# Assume traffic jam at position index=250, on lane 2 and 3
+# Assume traffic jam at position index=250, on lane 2
 class MultiLane:
     def __init__(self, num_L, vMax):
         self.lanes = [];
@@ -15,9 +15,9 @@ class MultiLane:
         self.cell_size = settings.CELL_SIZE
         self.vMax = vMax
         L = settings.L
-        den = [0.09, 0.08, 0.07, 0.07, 0.07]
+        densities = [0.09, 0.08, 0.07, 0.07, 0.07]
         for i in range(num_L):
-            self.lanes.append(lane.Lane(L, vMax, den[i], i))
+            self.lanes.append(lane.Lane(L, vMax, densities[i], i))
      
     def update_speed(self):
         for lane in self.lanes:
@@ -75,7 +75,7 @@ class MultiLane:
                             break
                     if rightLaneIsEmpty and random.random() < self.probRight:
                         lane.RemoveCar(j)
-                        car.speed += 2      # might need to reconsider the car's behavior after lane switch!!
+                        car.speed += 2
                         self.lanes[i + 1].addCar(car, j)
 
   
@@ -97,6 +97,9 @@ class MultiLane:
     def update_states(self, iter=0, blocked=-1):
         self.exit_at_end ()
         self.enter_at_start (0.5)
+        # set change-to-right first when the iteration num is even
+        # otherwise set priority to change left, altering between
+        # 2 cases to eliminate bias
         if (iter % 2 == 0):
             self.change_right ()
             self.change_left ()

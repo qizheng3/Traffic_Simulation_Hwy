@@ -11,7 +11,7 @@ class Highway:
         self.mergelane = merge.MergeLane(40, 40)
         self.exitway = exit.ExitLane(40)
         
-
+    # integrate all procedures in a single run for the main (multi-lane) highway
     def update_states(self, iter=0, block=-1):
         self.merge_join()
         self.exit_leave(0.9)
@@ -19,18 +19,22 @@ class Highway:
         self.mergelane.update_states()
         self.exitway.update_states()
         
-
+    # merge 2 lanes into the 5th lane of the main highway
+    # check merge lane first to find if there is any vehicle waiting
+    # to merge into the main road, then check open positions on main road
     def merge_join(self):
-        joins = settings.JOIN_ID[:2]
+        joins = settings.JOIN_ID[:2] # get the joint cell id
         for k in range(2):
             dt = 0
-            for i in range (1, 4):
+            for i in range (1, 4):  # any vehicle in the first 3 cells is considered ready for merging
                 car = self.mergelane.lanes[k].cells[-i]
                 if car != None:
                     pos = i
                     break
             if car != None:
                 for pt in range(joins[k], joins[k]+80):
+                    # cells available for merging is defined as an open cell with 80 ft open space behind
+                    # and 40ft open space ahead
                     if all(c == None for c in self.multiway.lanes[k].cells[pt-8: pt+5]):
                         self.mergelane.lanes[k].cells[-pos] = None
                         if random.random()<0.5:
