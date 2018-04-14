@@ -15,7 +15,7 @@ class Lane:
         # initialize some vehicles in the lane
         randvar = int(l/100)
         num = min(int(density * l) + random.randint(-randvar, randvar), l-22)   # adding some variance in the distribution
-        pos = random.sample(xrange(10, l-11), num)
+        pos = random.sample(xrange(6, l-6), num)
         
         for p in pos:
             self.cells[p] = vehicle.Vehicle(id)
@@ -26,11 +26,11 @@ class Lane:
     # add a new vehicle into a given position of one lane
     def addCar(self, car, position):
         if (self.cells[position] == None):
-            self.cells[position] = car;
-            self.vNum = self.vNum + 1;
-            return True;
+            self.cells[position] = car
+            self.vNum = self.vNum + 1
+            return True
         else:
-            return False;
+            return False
     
     def RemoveCar(self, position):
         if (self.cells[position] != None):
@@ -39,8 +39,12 @@ class Lane:
             self.cells[position] = None;
             return car
 
-    def update_speed(self, end_pts, speed_up_dist, slow_down_dist, vlow):
+    def update_speed(self, end_pts, speed_up_dist, slow_down_dist, vlow, end=False):
         vnew = [-1] * self.size
+        if end == True:
+            for i in range(1, 4):
+                if self.cells[i] != None:
+                    self.cells[i].speed = 0
         for i in range (3, self.size - end_pts):
             if self.cells[i] != None:
                 assert self.cells[i].speed >= 0
@@ -62,6 +66,8 @@ class Lane:
                     else:
                         flag = False
                         for j in range (1, int (slow_down_dist / self.cell_size + 1)):
+                            if i + j > self.size - 1:
+                                break
                             if self.cells[i + j] != None and self.cells[i].speed > self.cells[i + j].speed:
                                 flag = True
                                 id = i + j
@@ -74,26 +80,21 @@ class Lane:
                 self.cells[i].speed = vnew[i]
 
     def update_position(self, start=False, start_pts=0, end=False, end_pts=0):
-        endpos = self.size - 1
-        if end == True:
-            endpos = self.size - 1 - end_pts
-            for i in range(1, end_pts+1):
-                if self.cells[-i] != None:
-                    self.cells[-i].speed = 0
-        for i in range(endpos, -1, -1):
+        for i in range(self.size - 1, -1, -1):
             if self.cells[i] != None:
+                if self.cells[i].speed == 0:
+                    continue
                 newPos = i + self.cells[i].speed  # calculate which cell this vehicle will move to
                 if newPos >= self.size - 1 - end_pts and end == True:
                     self.cells[i].speed = 0
                     flag = False
-                    for k in range(i+1, self.size - 1):
+                    for k in range(i+1, self.size):
                         if self.cells[k]!= None:
                             flag = True
                             break
                     if flag:
-                        car = self.cells[i]
+                        self.cells[k-1] = self.cells[i]
                         self.cells[i] = None
-                        self.cells[k-1] = car
                     else:
                         self.cells[-1] = self.cells[i]
                         self.cells[i] = None
@@ -109,7 +110,6 @@ class Lane:
                             self.cells[j].speed = 0
                             self.cells[i] = None
                             break
-
  
     # get some system status of this lane (e.g., density, occurence of accidents)
     def get_parameters(self):

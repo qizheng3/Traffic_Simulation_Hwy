@@ -49,14 +49,17 @@ class UI (object):
         self.messageQueue = Queue.Queue ()
         
 
-    def drawFrame(self, x, y):
+    def drawFrame(self, x, y, num):
         self.figure.clf ()
-        colors = ['b', 'r', 'm', 'g', 'k']
-        for i in range(5):
-            self.figure.add_subplot (111).scatter(x[i], y[i], s=1.5, color=colors[i])
+        # colors = ['b', 'r', 'm', 'g', 'k']
+        for i in range(num):
+            self.figure.add_subplot (111).scatter(x[i], y[i], s=1.5)
+            # self.figure.add_subplot (111).scatter (x[i], y[i], s=1.5, color=colors[i])
         axes = self.figure.gca ()
         axes.set_ylim ([-500, 3750])
         axes.set_xlim ([-500, 3750])
+        # axes.set_ylim ([0, 2000])
+        # axes.set_xlim ([-500, 2000])
         self.canvas.show ()
 
     def processMessage(self):
@@ -69,7 +72,8 @@ class UI (object):
         while True:
             if not self.messageQueue.empty ():
                 x, y = self.messageQueue.get ()
-                self.drawFrame (x, y)
+                num = len(x)
+                self.drawFrame (x, y, num)
                 # print "*"
             # else:
             # print "$"

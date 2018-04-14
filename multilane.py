@@ -83,34 +83,25 @@ class MultiLane:
             for j in range (2):
                 if lane.cells[j] == None:
                     if random.random () < prob:
-                        lane.addCar(vehicle.Vehicle(i), i)
+                        lane.addCar(vehicle.Vehicle(i), j)
                         break
   
     
     def exit_at_end(self):
         for lane in self.lanes:
-            for i in range(len(lane.cells) - 5, len(lane.cells)):
+            for i in range(len(lane.cells) - 8, len(lane.cells)):
                 if lane.cells[i] is not None:
                     lane.RemoveCar(i)
 
-    
-    # def entranceEvent(self, probExit, probEnter):
-    #     lastLane = self.lanes[-1]
-    #     for i in range (1000, 1000, len (lastLane.cells)):
-    #         j = -1
-    #         while j > -20:
-    #             if lastLane.cells[i + j] is None:
-    #                 j -= 1
-    #             else:
-    #                 rand = random.random()
-    #                 if rand < probExit:
-    #                     lastLane.RemoveCar(i + j)
-    #                 break
-    #         rand = random.random()
-    #         if rand < probEnter:
-    #             lastLane.addCar (vehicle.Vehicle (), i)
-    #
-    
+
+    def update_states(self):
+        self.exit_at_end ()
+        self.enter_at_start (0.4)
+        self.change_left ()
+        self.change_right ()
+        self.update_speed ()
+        self.update_position ()
+        
     def printSpeed(self):
         for lane in self.lanes:
             for i in range (lane.size):

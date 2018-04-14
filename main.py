@@ -4,7 +4,7 @@ import ui
 import threading
 import settings
 import multilane
-
+import highway
 
 def run(GUI):
     iteration = 1000
@@ -12,7 +12,7 @@ def run(GUI):
     hwy = multilane.MultiLane(5, 8, 0.6)
     basemap = settings.UI_BASEMAP
 
-    for i in range (iteration):
+    for iter in range (iteration):
         hwy.exit_at_end ()
         hwy.enter_at_start (0.4)
         hwy.change_left ()
@@ -33,10 +33,44 @@ def run(GUI):
         GUI.sendMessage (x, y)
 
 
+
+
+
+def test_run(GUI):
+    iteration = 1000
+    hwy = highway.HighWay ()
+    basemap = settings.UI_BASEMAP
+    for iter in range (iteration):
+        hwy.update_states ()
+        res1 = hwy.multiway.lanes
+        res2 = hwy.mergelane.lanes
+        x = [[] for _ in range (7)]
+        y = [[] for _ in range (7)]
+        for i, lanex in enumerate (res1):
+            for j, c in enumerate (lanex.cells):
+                if c != None:
+                    id = c.id
+                    xi, yi = basemap[i][j]
+                    x[id].append (xi)
+                    y[id].append (yi)
+                    
+        for i, lanex in enumerate (res2):
+            for j, c in enumerate (lanex.cells):
+                if c != None:
+                    id = c.id
+                    xi, yi = basemap[i+5][j]
+                    x[id].append (xi)
+                    y[id].append (yi)
+        
+        # send data to UI
+        GUI.sendMessage (x, y)
+
+# 8 -- 518, 518, 518, 518, 518, 136, 163, 111
+
 def main():
     settings.init()
     GUI = ui.UI()
-    workerThread = threading.Thread(target=run, args=(GUI,))
+    workerThread = threading.Thread(target=test_run, args=(GUI,))
     workerThread.setDaemon(True)
     workerThread.start()
     # run(GUI)
