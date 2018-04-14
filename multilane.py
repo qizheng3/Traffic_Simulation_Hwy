@@ -79,7 +79,15 @@ class MultiLane:
                         self.lanes[i + 1].addCar(car, j)
 
   
-    def enter_at_start(self, prob):
+    def enter_at_start(self, iter = iter):
+        if iter < 30:
+            prob = 0.7
+        elif iter < 80:
+            prob = 0.4
+        elif iter < 200:
+            prob = 0.3
+        else:
+            prob = 0.25
         for i, lane in enumerate(self.lanes):
             for j in range (2):
                 if lane.cells[j] == None:
@@ -96,7 +104,7 @@ class MultiLane:
 
     def update_states(self, iter=0, blocked=-1):
         self.exit_at_end ()
-        self.enter_at_start (0.5)
+        self.enter_at_start (iter=iter)
         # set change-to-right first when the iteration num is even
         # otherwise set priority to change left, altering between
         # 2 cases to eliminate bias

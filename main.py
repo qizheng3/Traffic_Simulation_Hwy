@@ -1,6 +1,5 @@
 
 import threading
-
 import highway
 import multilane
 import settings
