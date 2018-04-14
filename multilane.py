@@ -13,10 +13,11 @@ class MultiLane:
         self.num_L = num_L
         self.q = Queue.Queue()
         self.cell_size = settings.CELL_SIZE
-        self.vMax = vMax
         L = settings.L
         densities = [0.09, 0.08, 0.07, 0.07, 0.07]
         for i in range(num_L):
+            if i == num_L - 1:
+                vMax -= 1
             self.lanes.append(lane.Lane(L, vMax, densities[i], i))
      
     def update_speed(self):
@@ -81,18 +82,19 @@ class MultiLane:
   
     def enter_at_start(self, iter = iter):
         if iter < 30:
-            prob = 0.7
+            prob = 0.8
         elif iter < 80:
-            prob = 0.4
+            prob = 0.6
         elif iter < 200:
-            prob = 0.3
+            prob = 0.4
         else:
-            prob = 0.25
+            prob = 0.3
         for i, lane in enumerate(self.lanes):
-            for j in range (2):
+            for j in range (4):
                 if lane.cells[j] == None:
                     if random.random () < prob:
-                        lane.addCar(vehicle.Vehicle(base=0, id=i), j*3)
+                        lane.addCar(vehicle.Vehicle(base=0, id=i), j)
+                        break
   
     
     def exit_at_end(self):

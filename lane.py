@@ -64,7 +64,7 @@ class Lane:
                     # speed up if no vehicle within the range of "speed_up_dist" ft ahead of you
                     elif (int (speed_up_dist / self.cell_size + 1) < self.size - 1) and all (
                             c == None for c in self.cells[i + 1: i + int (speed_up_dist / self.cell_size + 1)]):
-                        vnew[i] = min (self.cells[i].speed + 2, self.vMax + 2)
+                        vnew[i] = min (self.cells[i].speed + 2, self.vMax + 1)
                     # slow down if any vehicle ahead is slower than you in the range of "slow_down_dist" ft ahead of you
                     # make sure the speed cannot go down to 0 (reduce to vlow)
                     else:
