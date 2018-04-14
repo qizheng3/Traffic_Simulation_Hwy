@@ -4,12 +4,18 @@
     <list default="true" id="03625283-741f-4e0b-afe2-ed47078ab95c" name="Default" comment="">
       <change afterPath="$PROJECT_DIR$/exit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/highway.py" beforeDir="false" afterPath="$PROJECT_DIR$/highway.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lane.py" beforeDir="false" afterPath="$PROJECT_DIR$/lane.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/merge_lane.py" beforeDir="false" afterPath="$PROJECT_DIR$/merge.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/multilane.py" beforeDir="false" afterPath="$PROJECT_DIR$/multilane.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/multilane.py" beforeDir="false" afterPath="$PROJECT_DIR$/multilane.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
       <change beforePath="$PROJECT_DIR$/ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,6 +27,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="ui.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -28,16 +35,42 @@
               <caret line="51" column="35" lean-forward="true" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
+=======
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="ui.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ui.py">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1500">
+              <caret line="100" column="29" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="multilane.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/multilane.py">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="123">
               <caret line="38" column="18" lean-forward="true" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+=======
+            <state relative-caret-position="3887">
+              <caret line="270" selection-start-line="270" selection-end-line="270" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -48,27 +81,50 @@
       <file leaf-file-name="highway.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/highway.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="150">
               <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="45">
+              <caret line="3" column="30" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="30" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="testing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testing.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
               <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+=======
+      <file leaf-file-name="cell.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cell.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="18" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="multilane.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/multilane.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -137,6 +193,16 @@
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="lane.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lane.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="79" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
             </state>
           </provider>
         </entry>
@@ -152,6 +218,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+<<<<<<< HEAD
       <find>200</find>
       <find>int</find>
       <find>cells</find>
@@ -190,6 +257,47 @@
       <replace>self.cell_size</replace>
       <replace>self</replace>
       <replace>self.multiway</replace>
+=======
+      <find>plt</find>
+      <find>offset</find>
+      <find>abs</find>
+      <find>run</find>
+      <find>dist_2pt</find>
+      <find>q</find>
+      <find>grid</find>
+      <find>j</find>
+      <find>movement</find>
+      <find>self.temporary</find>
+      <find>remov</find>
+      <find>join</find>
+      <find>in_co</find>
+      <find>veh</find>
+      <find>sizesize</find>
+      <find>que</find>
+      <find>message</find>
+      <find>highway</find>
+      <find>refresh</find>
+      <find>cells</find>
+      <find>lookahead</find>
+      <find>for</find>
+      <find>lane</find>
+      <find>.put</find>
+      <find>len</find>
+      <find>self.movement</find>
+      <find>self.lanes[i]</find>
+      <find>self.movement[i-1][j] is None:</find>
+      <find>print</find>
+      <find>p</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>jy</replace>
+      <replace>lane_offset</replace>
+      <replace>utility.dist_2pt</replace>
+      <replace>self.temporary</replace>
+      <replace>self.movement</replace>
+      <replace>hwy</replace>
+      <replace>lanex</replace>
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -199,6 +307,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/ExitLane.py" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/Cell.py" />
         <option value="$PROJECT_DIR$/../multilane.py" />
         <option value="$PROJECT_DIR$/../lane.py" />
@@ -220,13 +329,45 @@
         <option value="$PROJECT_DIR$/exit.py" />
         <option value="$PROJECT_DIR$/multilane.py" />
         <option value="$PROJECT_DIR$/testing.py" />
+=======
+        <option value="$PROJECT_DIR$/Lane.py" />
+        <option value="$PROJECT_DIR$/HighWay.py" />
+        <option value="$PROJECT_DIR$/MultiLane.py" />
+        <option value="$PROJECT_DIR$/Cell.py" />
+        <option value="$PROJECT_DIR$/highway.py" />
+        <option value="$PROJECT_DIR$/UI.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/global_param.py" />
+        <option value="$PROJECT_DIR$/set.py" />
+        <option value="$PROJECT_DIR$/map_digitizer.py" />
+        <option value="$PROJECT_DIR$/basemaps_backup/test.py" />
+        <option value="$PROJECT_DIR$/map.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/basemaps_backup/utility.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/settings.py" />
+        <option value="$PROJECT_DIR$/utility.py" />
+        <option value="$PROJECT_DIR$/vehicle.py" />
+        <option value="$PROJECT_DIR$/../Done-Hwy-Sim-Checkpoint/Highway_Simulation_CheckPoint/codes/main.py" />
+        <option value="$PROJECT_DIR$/cell.py" />
+        <option value="$PROJECT_DIR$/lane.py" />
+        <option value="$PROJECT_DIR$/ui.py" />
+        <option value="$PROJECT_DIR$/multilane.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="50" />
     <option name="y" value="23" />
     <option name="width" value="1380" />
+=======
+    <option name="x" value="75" />
+    <option name="y" value="23" />
+    <option name="width" value="1323" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
     <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -237,23 +378,33 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
+<<<<<<< HEAD
               <item name="codes" type="b2602c69:ProjectViewProjectNode" />
               <item name="codes" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="InProgress-Hwy-Simulation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="InProgress-Hwy-Simulation" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backup_codes" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -348,7 +499,17 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView" selected-index="1">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="50" y="23" width="1380" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
@@ -360,6 +521,20 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32948717" />
+=======
+    <frame x="75" y="23" width="1323" height="877" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20583718" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.08589744" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -368,6 +543,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Find" order="1" weight="0.32948717" />
     </layout>
     <layout-to-restore>
@@ -375,10 +551,18 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.2551282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14128035" />
+=======
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13735466" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Find" order="1" weight="0.32948717" />
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -388,22 +572,44 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
+=======
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32876712" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/multilane.py">
+=======
+    <entry file="file://$PROJECT_DIR$/settings.py">
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
+        <state relative-caret-position="90">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="18" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/highway.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -419,15 +625,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
+=======
+    <entry file="file://$PROJECT_DIR$/lane.py">
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="25" column="39" lean-forward="true" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+        <state relative-caret-position="105">
+          <caret line="7" column="79" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/vehicle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -435,6 +645,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
     <entry file="file://$PROJECT_DIR$/multilane.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -658,6 +870,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/../multilane.py" />
     <entry file="file://$PROJECT_DIR$/../lane.py" />
     <entry file="file://$PROJECT_DIR$/../ui.py" />
@@ -704,12 +917,67 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="38" column="18" lean-forward="true" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
+=======
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="150">
+            <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HWY_Backup/Highway-Simulation/Lane.py" />
+    <entry file="file://$PROJECT_DIR$/../BB/Hwy_Simulation/MultiLane.py" />
+    <entry file="file:///System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/matplotlib/figure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/map_digitizer.py" />
+    <entry file="file://$PROJECT_DIR$/highway.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="12" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Done-Hwy-Sim-Checkpoint/Highway_Simulation_CheckPoint/codes/UI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="44" selection-start-line="44" selection-end-line="46" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backup_codes/multilane.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="43" lean-forward="true" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="18" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/testing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -736,10 +1004,64 @@
           <caret line="50" column="14" lean-forward="true" selection-start-line="50" selection-start-column="14" selection-end-line="50" selection-end-column="14" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/../Done-Hwy-Sim-Checkpoint/Highway_Simulation_CheckPoint/codes/MultiLane.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="34" column="44" lean-forward="true" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vehicle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cell.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Done-Hwy-Sim-Checkpoint/Highway_Simulation_CheckPoint/codes/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../final/codes/MultiLane.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="72" column="27" selection-start-line="57" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../final/codes/UI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="112" lean-forward="true" selection-end-line="112" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="100" column="29" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-960">
@@ -754,22 +1076,39 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+=======
+    <entry file="file://$PROJECT_DIR$/test.py" />
+    <entry file="file://$PROJECT_DIR$/lane.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="79" selection-start-line="7" selection-start-column="79" selection-end-line="7" selection-end-column="79" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/exit.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/multilane.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3887">
+          <caret line="270" selection-start-line="270" selection-end-line="270" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/merge.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -784,6 +1123,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+=======
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="48" column="33" lean-forward="true" selection-start-line="48" selection-start-column="33" selection-end-line="48" selection-end-column="33" />
+>>>>>>> 6c93897b4206bb9a75efebaa85c703808a536f37
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

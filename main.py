@@ -33,9 +33,6 @@ def run(GUI):
         GUI.sendMessage (x, y)
 
 
-
-
-
 def test_run(GUI):
     iteration = 1000
     hwy = highway.HighWay ()
