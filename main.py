@@ -52,6 +52,7 @@ def run(GUI):
 def main():
     settings.init()
     random.seed(time.time ())
+    print settings.UI_BASEMAP[1][250]
     GUI = ui.UI()
     workerThread = threading.Thread(target=run, args=(GUI,))
     workerThread.setDaemon(True)
