@@ -20,14 +20,31 @@ class MultiLane:
                 vMax -= 1
             self.lanes.append(lane.Lane(L, vMax, densities[i], i))
      
-    def update_speed(self):
-        for lane in self.lanes:
-            lane.update_speed(5, 130, 60, 3)
-                
- 
-    def update_position(self):
-        for lane in self.lanes:
-            lane.update_position()
+    def update_speed(self, itern):
+        for i in range(len(self.lanes)):
+            if i == 1:
+                self.lanes[i].update_speed(5, 130, 60, 3, it=itern)
+            else:
+                self.lanes[i].update_speed(5, 130, 60, 3)
+    
+    
+    def update_position(self, itern):
+        for i in range(len(self.lanes)):
+            # flag = True
+            # if accident_pts != None:
+            #     ac_lanes = [x for x, _ in accident_pts]
+            #     if i in ac_lanes:
+            #         indx = ac_lanes.index(i)
+            #         pos = accident_pts[indx][1]
+            #         self.lanes[i].update_position(accident_pt=pos)
+            #         flag = False
+            # if flag:
+            if i == 1:
+                x = None
+            else:
+                x = 250
+            self.lanes[i].update_position (it=x)
+            
                     
  
     def change_left(self):
@@ -80,12 +97,12 @@ class MultiLane:
                         self.lanes[i + 1].addCar(car, j)
 
   
-    def enter_at_start(self, iter = iter):
-        if iter < 30:
+    def enter_at_start(self, itern):
+        if itern < 30:
             prob = 0.8
-        elif iter < 80:
+        elif itern < 80:
             prob = 0.6
-        elif iter < 200:
+        elif itern < 200:
             prob = 0.4
         else:
             prob = 0.3
@@ -104,20 +121,21 @@ class MultiLane:
                     lane.RemoveCar(i)
 
 
-    def update_states(self, iter=0, blocked=-1):
+    def update_states(self, itern):
         self.exit_at_end ()
-        self.enter_at_start (iter=iter)
+        self.enter_at_start (itern)
         # set change-to-right first when the iteration num is even
         # otherwise set priority to change left, altering between
         # 2 cases to eliminate bias
-        if (iter % 2 == 0):
+        if (itern % 2 == 0):
             self.change_right ()
             self.change_left ()
         else:
             self.change_left ()
             self.change_right ()
-        self.update_speed ()
-        self.update_position ()
+        self.update_speed (itern)
+        self.update_position (itern)
+ 
         
     def printSpeed(self):
         for lane in self.lanes:

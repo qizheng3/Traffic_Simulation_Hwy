@@ -57,8 +57,6 @@ class UI (object):
         axes = self.figure.gca ()
         axes.set_ylim ([-200, 3500])
         axes.set_xlim ([-300, 3500])
-        # axes.set_ylim ([0, 2000])
-        # axes.set_xlim ([-500, 2000])
         self.canvas.show ()
 
     def processMessage(self):

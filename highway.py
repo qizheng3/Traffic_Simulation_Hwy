@@ -12,10 +12,10 @@ class Highway:
         self.exitway = exit.ExitLane(40)
         
     # integrate all procedures in a single run for the main (multi-lane) highway
-    def update_states(self, iter=0, block=-1):
+    def update_states(self, itern):
         self.merge_join()
         self.exit_leave(0.9)
-        self.multiway.update_states(iter=iter, blocked=block)
+        self.multiway.update_states(itern)
         self.mergelane.update_states()
         self.exitway.update_states()
         

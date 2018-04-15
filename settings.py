@@ -18,7 +18,7 @@ def init():
     global UI_BASEMAP
     global L, L1, L2, L3
     
-    scale = 5.5
+    scale = 5
     origin = (622, 861)
     join_pos = [1, 0.33, 0]
     traffic_lane = [985, 910]

@@ -11,4 +11,4 @@ class Vehicle:
         # initialize the speed of one vehicle
         
     def changeSpeed(self, v):
-        self.speed = v;
+        self.speed = v

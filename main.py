@@ -7,44 +7,16 @@ import ui
 import time
 import random
 
-def test_run(GUI):
-    iteration = 1000
-
-    hwy = multilane.MultiLane(5, 8, 0.6)
-    basemap = settings.UI_BASEMAP
-
-    for iter in range (iteration):
-        hwy.exit_at_end ()
-        hwy.enter_at_start (0.4)
-        hwy.change_left ()
-        hwy.change_right ()
-        hwy.update_speed ()
-        hwy.update_position ()
-        x = [[] for _ in range(5)]
-        y = [[] for _ in range(5)]
-        for i, lanex in enumerate(hwy.lanes):
-            for j, c in enumerate(lanex.cells):
-                if c != None:
-                    id = c.id
-                    xi, yi = basemap[i][j]
-                    x[id].append (xi)
-                    y[id].append (yi)
-
-        # send data to UI
-        GUI.sendMessage (x, y)
-
-
 def run(GUI):
-    iteration = 2000
-    blocked = False
+    iteration = 200
+    traffic = 50
+    acc_start = 30
     hwy = highway.Highway ()
     basemap = settings.UI_BASEMAP
-    for iter in range (iteration):
-        if iter > 300 and iter < 300 + blocked:
-            blocked = True
-        else:
-            blocked = False
-        hwy.update_states (iter=iter, block=blocked)
+    for it in range (iteration):
+        
+        hwy.update_states(itern=it)
+        
         res1 = hwy.multiway.lanes
         res2 = hwy.mergelane.lanes
         res3 = hwy.exitway.lanes
@@ -77,7 +49,6 @@ def run(GUI):
         GUI.sendMessage (x, y)
 
 # 8 -- 518, 518, 518, 518, 518, 136, 163, 111
-
 def main():
     settings.init()
     random.seed(time.time ())
