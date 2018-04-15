@@ -46,7 +46,7 @@ class Lane:
     def update_speed(self, end_pts, speed_up_dist, slow_down_dist, vlow, end=False, accident=None):
         vnew = [-1] * self.size
         if accident != None:
-            for m in range(245, 251):
+            for m in range(248, 251):
                 if self.cells[m] != None:
                     self.cells[m].speed = 0
         if end == True:
@@ -65,6 +65,9 @@ class Lane:
                     if self.cells[i].speed == 0 and all (
                             c == None for c in self.cells[min (i + 1, self.size - 1): min (i + 4, self.size - 1)]):
                         vnew[i] = 2
+                    if self.cells[i].speed == 0 and all (
+                            c == None for c in self.cells[min (i + 1, self.size - 1): min (i + 6, self.size - 1)]):
+                        vnew[i] = min(4, self.vMax-1)
                     # speed up if no vehicle within the range of "speed_up_dist" ft ahead of you
                     elif (int (speed_up_dist / self.cell_size + 1) < self.size - 1) and all (
                             c == None for c in self.cells[i + 1: i + int (speed_up_dist / self.cell_size + 1)]):
@@ -82,6 +85,7 @@ class Lane:
                                 break
                         if flag:
                             vnew[i] = max (self.cells[id].speed, vlow)
+        
         # update the speed of all vehicles after checking of the complete self has been finished
         for i in range (len (vnew)):
             if vnew[i] >= 0:
@@ -168,6 +172,7 @@ class Lane:
                                 break
                         if flag:
                             vnew[i] = max (self.cells[id].speed, vlow)
+        
         # update the speed of all vehicles after checking of the complete self has been finished
         for i in range (len (vnew)):
             if vnew[i] >= 0:

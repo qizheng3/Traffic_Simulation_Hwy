@@ -14,7 +14,7 @@ class MultiLane:
         self.q = Queue.Queue()
         self.cell_size = settings.CELL_SIZE
         L = settings.L
-        densities = [0.1, 0.09, 0.09, 0.09, 0.08]
+        densities = [0.08, 0.08, 0.09, 0.09, 0.09]
         for i in range(num_L):
             if i == num_L - 1:
                 vMax -= 1
@@ -23,13 +23,13 @@ class MultiLane:
     def update_speed(self, flag):
         if flag == 0:
             for i in range (len (self.lanes)):
-                self.lanes[i].update_speed (5, 130, 60, 3)
+                self.lanes[i].update_speed (5, 130, 60, 3, accident=None)
         else:
             for i in range(len(self.lanes)):
                 if i == 1 or i == 2:
                     self.lanes[i].update_speed(5, 130, 60, 3, accident=1)
                 else:
-                    self.lanes[i].update_speed(5, 130, 60, 3)
+                    self.lanes[i].update_speed(5, 130, 60, 3, accident=None)
     
     
     def update_position(self, flag):
@@ -39,7 +39,7 @@ class MultiLane:
         else:
             for i in range(len(self.lanes)):
                 if i == 1 or i == 2:
-                    self.lanes[i].update_position ()
+                    self.lanes[i].update_position (accident=None)
                 else:
                     self.lanes[i].update_position (accident=1)
             
@@ -92,7 +92,7 @@ class MultiLane:
                             break
                     if rightLaneIsEmpty and random.random() < self.probRight:
                         lane.RemoveCar(j)
-                        car.speed += 2
+                        car.speed = min (car.speed + 2, 3, car.vMax)
                         self.lanes[i + 1].addCar(car, j)
 
   
