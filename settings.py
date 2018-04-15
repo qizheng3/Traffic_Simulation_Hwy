@@ -103,6 +103,7 @@ def print_out():
     print "----------------------------------------"
     print "Cell Size: ", CELL_SIZE
     print "Merge/Exit Pts(indices): ", JOIN_ID
-    
+    print UI_BASEMAP[1][251]
+    print UI_BASEMAP[2][251]
 
-# print_out()
+print_out()

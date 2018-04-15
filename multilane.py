@@ -56,7 +56,7 @@ class MultiLane:
                 else:
                     continue
                 # switch lanes allowed
-                if car.speed <= 0.8 * car.vMax:
+                if car.speed < 0.7 * car.vMax:
                     leftLaneIsEmpty = True
                     for k in range (-int(100/self.cell_size), int(50/self.cell_size)):
                         if j + k < 0 or j + k > L-1:
@@ -67,7 +67,7 @@ class MultiLane:
                             break
                     if leftLaneIsEmpty and random.random() < self.probLeft:
                         lane.RemoveCar(j)
-                        car.speed += 2
+                        car.speed = min(car.speed + 2, 3, car.vMax)
                         self.lanes[i - 1].addCar(car, j)
 
     
@@ -81,7 +81,7 @@ class MultiLane:
                 else:
                     continue
                 # if this car is allowed to switch the lane
-                if car.speed <= 0.8 * car.vMax:
+                if car.speed < 0.7 * car.vMax:
                     rightLaneIsEmpty = True
                     for k in range (-int(100/self.cell_size), int(50/self.cell_size)):
                         if j + k < 0 or j + k > L - 1:
@@ -97,16 +97,7 @@ class MultiLane:
 
   
     def enter_at_start(self, itern):
-        if itern < 30:
-            prob = 0.6
-        elif itern < 50:
-            prob = 0.6
-        elif itern < 80:
-            prob = 0.3
-        elif itern < 100:
-            prob = 0.2
-        else:
-            prob = 0.15
+        prob = 0.3
         for i, lane in enumerate(self.lanes):
             for j in range (4):
                 if lane.cells[j] == None:
