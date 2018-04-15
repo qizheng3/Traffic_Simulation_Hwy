@@ -4,7 +4,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from Tkinter import *
 import settings
-import numpy as np
+
 import Queue
 import threading
 import warnings
@@ -22,7 +22,7 @@ class UI (object):
     programTitle = "Traffic Simulation Software Version 1.0"
     animationSize = (8, 8)
     animationDpi = 100
-    refreshInterval = 0.4  # refresh frame interval in second
+    refreshInterval = 0.3  # refresh frame interval in second
     
     def __init__(self):
         # UI preparation
@@ -134,18 +134,25 @@ class UI (object):
         self.figure.clf()
         colors = ['red', 'orange', 'yellow', "green", "blue", 'purple', 'pink', "black"]
         for i in range(num):
-            self.figure.add_subplot (111).scatter (np.array(x[i]), np.array(y[i]), s=4, color=colors[i])
+            ax = self.figure.add_subplot (111)
+            ax.scatter (x[i], y[i], s=8, color=colors[i])
+            ax.spines['right'].set_visible(False)
+            ax.spines['left'].set_visible(False)
+            ax.spines['top'].set_visible(False)
+            ax.spines['bottom'].set_visible(False)
         if self.set_traffic_jam_mode.cget("text") == "ON":
-            self.figure.add_subplot (111).scatter (1210, 1740, s=30, color="black", marker="x")
-            self.figure.legend(["Lane 0","Lane 1","Lane 2","Lane 3","Lane 4","Merge 0","Merge 1","Exit", "Accident"], loc="lower left", bbox_to_anchor=(0.13,0.12))
+            self.figure.add_subplot (111).scatter ([1213.8414634146343],[1731.8292682926829], s=20, color="black", marker="x")
+            self.figure.legend(["Lane 0","Lane 1","Lane 2","Lane 3","Lane 4","Merge 0","Merge 1","Exit", "Accident"], loc="lower left", bbox_to_anchor=(0.05,0.05))
         else:
-            self.figure.legend(["Lane 0","Lane 1","Lane 2","Lane 3","Lane 4","Merge 0","Merge 1","Exit"], loc="lower left", bbox_to_anchor=(0.13,0.12))
+            self.figure.legend(["Lane 0","Lane 1","Lane 2","Lane 3","Lane 4","Merge 0","Merge 1","Exit"], loc="lower left", bbox_to_anchor=(0.08,0.08))
+        
         fig = self.figure.gca()
         # ax.spines['right'].set_visible(False)
         fig.set_ylim ([-200, 3500])
         fig.set_xlim ([-300, 3500])
         fig.xaxis.set_visible(False)
         fig.yaxis.set_visible(False)
+        self.figure.tight_layout(pad=0)
 
         self.canvas.show ()
 
@@ -275,7 +282,6 @@ class UI (object):
     def run(self, iteration_num, interval, duration, jam_start, jam_end):
         iteration = iteration_num
         acc_start = jam_start
-        print jam_start
         acc_stop = jam_end
         hwy = highway.Highway ()
         basemap = settings.UI_BASEMAP
@@ -303,7 +309,7 @@ class UI (object):
                 if itr % (traff_intv + traff_dura) == 0:
                     hwy.mergelane.e_prob1 = 0
                 elif itr % (traff_intv + traff_dura) == traff_intv:
-                    hwy.mergelane.e_prob1 = 0.8
+                    hwy.mergelane.e_prob1 = 0.7
                 if itr == iteration - 1:
                     hwy.mergelane.e_prob1 = 0.5
             
