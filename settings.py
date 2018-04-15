@@ -96,14 +96,14 @@ def print_out():
     
     print "\nLengths of all (5+3) lanes/roads"
     print "----------------------------------------"
-    # for l in UI_BASEMAP:
-    #     print len(l)
-    print L, L1, L2, L3
-    print "\n\nOther key parameters"
-    print "----------------------------------------"
-    print "Cell Size: ", CELL_SIZE
-    print "Merge/Exit Pts(indices): ", JOIN_ID
-    print UI_BASEMAP[1][251]
-    print UI_BASEMAP[2][251]
+    for l in UI_BASEMAP:
+         print len(l),
+    # print L, L1, L2, L3
+    # print "\n\nOther key parameters"
+    # print "----------------------------------------"
+    # print "Cell Size: ", CELL_SIZE
+    # print "Merge/Exit Pts(indices): ", JOIN_ID
+    # print UI_BASEMAP[1][251]
+    # print UI_BASEMAP[2][251]
 
-#print_out()
+print_out()

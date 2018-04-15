@@ -295,6 +295,7 @@ class UI (object):
 
         traff_intv = interval
         traff_dura = duration
+        hwy.update_states (0, 0)
         for itr in range (iteration):
 
             if accident == "ON":
@@ -320,30 +321,67 @@ class UI (object):
             res2 = hwy.mergelane.lanes
             res3 = hwy.exitway.lanes
             
+            res = [[] for _ in range (8)]
+            res[:5] = res1
+            res[5:7] = res2
+            res[7] = res3
+            
             x = [[] for _ in range (8)]
             y = [[] for _ in range (8)]
-            for i, lanex in enumerate (res1):
+            for i, lanex in enumerate (res):
                 for j, c in enumerate (lanex.cells):
                     if c != None:
                         id = c.id
                         xi, yi = basemap[i][j]
                         x[id].append (xi)
                         y[id].append (yi)
-                        
-            for i, lanex in enumerate (res2):
-                for j, c in enumerate (lanex.cells):
-                    if c != None:
-                        id = c.id
-                        xi, yi = basemap[i+5][j]
-                        x[id].append (xi)
-                        y[id].append (yi)
-                        
-            for j, c in enumerate(res3.cells):
-                if c != None:
-                    id = c.id
-                    xi, yi = basemap[7][j]
-                    x[id].append (xi)
-                    y[id].append (yi)
+            
+            
+            if itr % 30 == 0 or itr % 30 == 1 or itr % 30 == 2:
+                print "\n----------------- The %dth Run: -----------------" % (itr)
+                for i, lane in enumerate (res):
+                    count = 0
+                    v_sum = 0
+                    for j, c in enumerate (lane.cells):
+                        if c != None:
+                            count += 1
+                            v_sum += c.speed
+                    print "Num of vehicles on Lane %d is %d" % (i, count)
+                    print "Average speed of vehicles on Lane %d is %f" % (i, float(10*v_sum)/count)
+                    
+                    count_enter = 0
+                    v_sum_enter = 0
+                    count_exit = 0
+                    v_sum_exit= 0
+                    
+                    if i in range(5):
+                        a, b, c = 100, 151, 50
+                    else:
+                        a, b, c = 30, 51, 0
+                    d = b - a - 1
+                    
+                    for j in range(a, b):
+                        if lane.cells[j] != None:
+                            count_enter += 1
+                            v_sum_enter += lane.cells[j].speed
+                        if lane.cells[c-j] != None:
+                            count_exit += 1
+                            v_sum_exit += lane.cells[c-j].speed
+                    
+                    print "Sparsity(at entrance): %f" % (float(count_enter)/d)
+                    print "Sparsity(at exit): %f" % (float(count_exit)/d)
+                    
+                    if count_enter == 0:
+                        print "No Entrance"
+                    else:
+                        print "Enter Speed (at entrance): %f" % (float(v_sum_enter)/count_enter)
+            
+                    if count_exit == 0:
+                        print "No Exit"
+                    else:
+                        print "Enter Speed (at entrance): %f" % (float (v_sum_exit)/count_exit)
+                    
+                    print
                     
             # send data to UI
             self.sendMessage (x, y, itr)

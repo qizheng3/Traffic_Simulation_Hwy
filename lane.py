@@ -45,10 +45,11 @@ class Lane:
 
     def update_speed(self, end_pts, speed_up_dist, slow_down_dist, vlow, end=False, accident=None):
         vnew = [-1] * self.size
-        if accident != None:
+        if accident != None and len(self.cells) > 250:
             for m in range(248, 251):
                 if self.cells[m] != None:
                     self.cells[m].speed = 0
+                    
         if end == True:
             for i in range(1, 4):
                 if self.cells[i] != None:
