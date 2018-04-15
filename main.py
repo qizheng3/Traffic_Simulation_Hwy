@@ -17,8 +17,6 @@ def run(GUI):
     traffic_light = "OFF"            # toggle between ON and OFF
     traff_intv = 100
     traff_dura = 90
-    light = ["Yello", "Green", "Red"]
-    ind = 1
     for itr in range (iteration):
 
         if accident == "ON":
