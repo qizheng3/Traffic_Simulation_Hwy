@@ -295,16 +295,15 @@ class UI (object):
 
         traff_intv = interval
         traff_dura = duration
-        hwy.update_states (0, 0)
         for itr in range (iteration):
 
             if accident == "ON":
                 # Interface for calling traffic accidents: hwy.update_states(itr, flag)
                 # flag = 1: traffic accident; flag = 0: no accident
                 if itr > acc_start or itr < acc_stop:
-                    hwy.update_states(itr, 1)
+                    hwy.update_states(itr, 0.3, 1)
                 else:
-                    hwy.update_states(itr, 0)
+                    hwy.update_states(itr, 0.3, 0)
             
             if traffic_light == "ON":
                 if itr % (traff_intv + traff_dura) == 0:
@@ -315,7 +314,7 @@ class UI (object):
                     hwy.mergelane.e_prob1 = 0.5
             
             if accident == "OFF":
-                hwy.update_states (itr, 0)
+                hwy.update_states (itr, 0.3, 0)
             
             res1 = hwy.multiway.lanes
             res2 = hwy.mergelane.lanes

@@ -75,17 +75,17 @@ class Lane:
                         vnew[i] = min (self.cells[i].speed + 2, self.vMax + 1)
                     # slow down if any vehicle ahead is slower than you in the range of "slow_down_dist" ft ahead of you
                     # make sure the speed cannot go down to 0 (reduce to vlow)
-                    else:
-                        flag = False
-                        for j in range (1, int (slow_down_dist / self.cell_size + 1)):
-                            if i + j > self.size - 1:
-                                break
-                            if self.cells[i + j] != None and self.cells[i].speed > self.cells[i + j].speed:
-                                flag = True
-                                id = i + j
-                                break
-                        if flag:
-                            vnew[i] = max (self.cells[id].speed, vlow)
+#                    else:
+#                        flag = False
+#                        for j in range (1, int (slow_down_dist / self.cell_size + 1)):
+#                            if i + j > self.size - 1:
+#                                break
+#                            if self.cells[i + j] != None and self.cells[i].speed > self.cells[i + j].speed:
+#                                flag = True
+#                                id = i + j
+#                                break
+#                        if flag:
+#                            vnew[i] = max (self.cells[id].speed, vlow)
         
         # update the speed of all vehicles after checking of the complete self has been finished
         for i in range (len (vnew)):
