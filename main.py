@@ -8,18 +8,43 @@ import time
 import random
 
 def run(GUI):
-    iteration = 200
-    traffic = 50
-    acc_start = 30
+    iteration = 5000
+    acc_start = 500
+    acc_stop = 2000
     hwy = highway.Highway ()
     basemap = settings.UI_BASEMAP
-    for it in range (iteration):
+    accident = "ON"                 # toggle between ON and OFF
+    traffic_light = "OFF"            # toggle between ON and OFF
+    traff_intv = 100
+    traff_dura = 90
+    light = ["Yello", "Green", "Red"]
+    ind = 1
+    for itr in range (iteration):
+
+        if accident == "ON":
+            # Interface for calling traffic accidents: hwy.update_states(itr, flag)
+            # flag = 1: traffic accident; flag = 0: no accident
+            if itr < acc_start or itr > acc_stop:
+                hwy.update_states(itr, 1)
+            else:
+                hwy.update_states(itr, 0)
         
-        hwy.update_states(itern=it)
+        if traffic_light == "ON":
+            if itr % (traff_intv + traff_dura) == 0:
+                hwy.mergelane.e_prob1 = 0
+            elif itr % (traff_intv + traff_dura) == traff_intv:
+                hwy.mergelane.e_prob1 = 0.7
+            if itr == iteration - 1:
+                hwy.mergelane.e_prob1 = 0.5
+            hwy.update_states (itr, 0)
+        
+        if accident == "OFF" and traffic_light == "OFF":
+            hwy.update_states (itr, 0)
         
         res1 = hwy.multiway.lanes
         res2 = hwy.mergelane.lanes
         res3 = hwy.exitway.lanes
+        
         x = [[] for _ in range (8)]
         y = [[] for _ in range (8)]
         for i, lanex in enumerate (res1):
@@ -52,7 +77,7 @@ def run(GUI):
 def main():
     settings.init()
     random.seed(time.time ())
-    print settings.UI_BASEMAP[1][250]
+    # print settings.UI_BASEMAP[1][250]
     GUI = ui.UI()
     workerThread = threading.Thread(target=run, args=(GUI,))
     workerThread.setDaemon(True)

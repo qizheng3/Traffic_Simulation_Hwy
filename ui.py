@@ -74,7 +74,7 @@ class UI (object):
                 # print "*"
             # else:
             # print "$"
-            sleep (1)
+            sleep (0.1)
 
     def sendMessage(self, x, y):
         # x, y = self.processData (highways)

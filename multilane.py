@@ -8,42 +8,41 @@ import settings
 class MultiLane:
     def __init__(self, num_L, vMax):
         self.lanes = [];
-        self.probRight = 0.9;  # the probability to turn the right lane
-        self.probLeft = 0.9;  # the probability to turn the left lane
+        self.probRight = 0.8  # the probability to turn the right lane
+        self.probLeft = 0.8  # the probability to turn the left lane
         self.num_L = num_L
         self.q = Queue.Queue()
         self.cell_size = settings.CELL_SIZE
         L = settings.L
-        densities = [0.09, 0.08, 0.07, 0.07, 0.07]
+        densities = [0.1, 0.09, 0.09, 0.09, 0.08]
         for i in range(num_L):
             if i == num_L - 1:
                 vMax -= 1
             self.lanes.append(lane.Lane(L, vMax, densities[i], i))
      
-    def update_speed(self, itern):
-        for i in range(len(self.lanes)):
-            if i == 1:
-                self.lanes[i].update_speed(5, 130, 60, 3, it=itern)
-            else:
-                self.lanes[i].update_speed(5, 130, 60, 3)
+    def update_speed(self, flag):
+        if flag == 0:
+            for i in range (len (self.lanes)):
+                self.lanes[i].update_speed (5, 130, 60, 3)
+        else:
+            for i in range(len(self.lanes)):
+                if i == 1 or i == 2:
+                    self.lanes[i].update_speed(5, 130, 60, 3, accident=1)
+                else:
+                    self.lanes[i].update_speed(5, 130, 60, 3)
     
     
-    def update_position(self, itern):
-        for i in range(len(self.lanes)):
-            # flag = True
-            # if accident_pts != None:
-            #     ac_lanes = [x for x, _ in accident_pts]
-            #     if i in ac_lanes:
-            #         indx = ac_lanes.index(i)
-            #         pos = accident_pts[indx][1]
-            #         self.lanes[i].update_position(accident_pt=pos)
-            #         flag = False
-            # if flag:
-            if i == 1:
-                x = None
-            else:
-                x = 250
-            self.lanes[i].update_position (it=x)
+    def update_position(self, flag):
+        if flag == 0:
+            for i in range (len (self.lanes)):
+                self.lanes[i].update_position (accident=1)
+        else:
+            for i in range(len(self.lanes)):
+                if i == 1 or i == 2:
+                    self.lanes[i].update_position ()
+                else:
+                    self.lanes[i].update_position (accident=1)
+            
             
                     
  
@@ -99,13 +98,15 @@ class MultiLane:
   
     def enter_at_start(self, itern):
         if itern < 30:
-            prob = 0.8
-        elif itern < 80:
             prob = 0.6
-        elif itern < 200:
-            prob = 0.4
-        else:
+        elif itern < 50:
+            prob = 0.6
+        elif itern < 80:
             prob = 0.3
+        elif itern < 100:
+            prob = 0.2
+        else:
+            prob = 0.15
         for i, lane in enumerate(self.lanes):
             for j in range (4):
                 if lane.cells[j] == None:
@@ -121,7 +122,7 @@ class MultiLane:
                     lane.RemoveCar(i)
 
 
-    def update_states(self, itern):
+    def update_states(self, itern, flag):
         self.exit_at_end ()
         self.enter_at_start (itern)
         # set change-to-right first when the iteration num is even
@@ -133,8 +134,8 @@ class MultiLane:
         else:
             self.change_left ()
             self.change_right ()
-        self.update_speed (itern)
-        self.update_position (itern)
+        self.update_speed (flag)
+        self.update_position (flag)
  
         
     def printSpeed(self):
