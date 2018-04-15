@@ -10,8 +10,8 @@ class MergeLane:
         ln = [settings.L1, settings.L2]
         self.lanes = [lane.Lane(ln[i], vm[i], 0.1, i+5) for i in range(2)]
         self.cell_size = settings.CELL_SIZE
-        self.e_prob1 = 0.5
-        self.e_prob2 = 0.5
+        self.e_prob1 = 0.6
+        self.e_prob2 = 0.6
     
     def update_speed(self):
         for lane in self.lanes:
