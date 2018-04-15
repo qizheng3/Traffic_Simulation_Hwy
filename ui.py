@@ -4,7 +4,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from Tkinter import *
 import settings
-
+import numpy as np
 import Queue
 import threading
 import warnings
@@ -22,7 +22,7 @@ class UI (object):
     programTitle = "Traffic Simulation Software Version 1.0"
     animationSize = (8, 8)
     animationDpi = 100
-    refreshInterval = 0.2  # refresh frame interval in second
+    refreshInterval = 0.4  # refresh frame interval in second
     
     def __init__(self):
         # UI preparation
@@ -134,9 +134,9 @@ class UI (object):
         self.figure.clf()
         colors = ['red', 'orange', 'yellow', "green", "blue", 'purple', 'pink', "black"]
         for i in range(num):
-            self.figure.add_subplot (111).scatter (x[i], y[i], s=4, color=colors[i])
+            self.figure.add_subplot (111).scatter (np.array(x[i]), np.array(y[i]), s=4, color=colors[i])
         if self.set_traffic_jam_mode.cget("text") == "ON":
-            self.figure.add_subplot (111).scatter ([1206.8699186991871],[1739.065040650406], s=25, color="black", marker="X")
+            self.figure.add_subplot (111).scatter (1210, 1740, s=30, color="black", marker="x")
             self.figure.legend(["Lane 0","Lane 1","Lane 2","Lane 3","Lane 4","Merge 0","Merge 1","Exit", "Accident"], loc="lower left", bbox_to_anchor=(0.13,0.12))
         else:
             self.figure.legend(["Lane 0","Lane 1","Lane 2","Lane 3","Lane 4","Merge 0","Merge 1","Exit"], loc="lower left", bbox_to_anchor=(0.13,0.12))
