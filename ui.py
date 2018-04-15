@@ -283,6 +283,7 @@ class UI (object):
         iteration = iteration_num
         acc_start = jam_start
         acc_stop = jam_end
+        prob_enter = 0.3
         hwy = highway.Highway ()
         basemap = settings.UI_BASEMAP
         accident = "ON"                 # toggle between ON and OFF
@@ -298,12 +299,12 @@ class UI (object):
         for itr in range (iteration):
 
             if accident == "ON":
-                # Interface for calling traffic accidents: hwy.update_states(itr, flag)
+                # Interface for calling traffic accidents: hwy.update_states(itr, prob_enter, flag)
                 # flag = 1: traffic accident; flag = 0: no accident
                 if itr > acc_start or itr < acc_stop:
-                    hwy.update_states(itr, 0.3, 1)
+                    hwy.update_states (itr, prob_enter, 1)
                 else:
-                    hwy.update_states(itr, 0.3, 0)
+                    hwy.update_states (itr, prob_enter, 0)
             
             if traffic_light == "ON":
                 if itr % (traff_intv + traff_dura) == 0:
@@ -314,7 +315,7 @@ class UI (object):
                     hwy.mergelane.e_prob1 = 0.5
             
             if accident == "OFF":
-                hwy.update_states (itr, 0.3, 0)
+                hwy.update_states (itr, prob_enter, 0)
             
             res1 = hwy.multiway.lanes
             res2 = hwy.mergelane.lanes
