@@ -379,7 +379,7 @@ class UI (object):
                     if count_exit == 0:
                         print "No Exit"
                     else:
-                        print "Enter Speed (at entrance): %f" % (float (v_sum_exit)/count_exit)
+                        print "Exit Speed (at exit): %f" % (float (v_sum_exit)/count_exit)
                     
                     print
                     
