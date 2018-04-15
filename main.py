@@ -14,7 +14,7 @@ def run(GUI):
     hwy = highway.Highway ()
     basemap = settings.UI_BASEMAP
     accident = "ON"                 # toggle between ON and OFF
-    traffic_light = "OFF"            # toggle between ON and OFF
+    traffic_light = "ON"            # toggle between ON and OFF
     traff_intv = 100
     traff_dura = 90
     for itr in range (iteration):
@@ -34,9 +34,8 @@ def run(GUI):
                 hwy.mergelane.e_prob1 = 0.7
             if itr == iteration - 1:
                 hwy.mergelane.e_prob1 = 0.5
-            hwy.update_states (itr, 0)
         
-        if accident == "OFF" and traffic_light == "OFF":
+        if accident == "OFF":
             hwy.update_states (itr, 0)
         
         res1 = hwy.multiway.lanes
